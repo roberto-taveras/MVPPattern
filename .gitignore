@@ -1,0 +1,11 @@
+*.suo
+*.dll
+BusinessObjects/bin/Debug/BusinessObjects.dll.config
+*.pdb
+BusinessObjects/bin/Debug/EntityFramework.SqlServer.xml
+BusinessObjects/bin/Debug/EntityFramework.xml
+*.ps1
+*.exe
+WinFormsAppBindings/obj/
+WinFormsAppBindings/bin/
+BusinessObjects/obj/

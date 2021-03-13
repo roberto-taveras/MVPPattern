@@ -1,0 +1,14 @@
+﻿using BusinessObjects.Interfaces;
+using BusinessObjects.Models;
+using BusinessObjects.Repository;
+
+namespace BusinessObjects.Presenters
+{
+    public class CustomerPresenter : RepositoryBase<ICustomer, Customer>
+    {
+        public CustomerPresenter(ICustomer customer):base(customer)
+        {
+
+        }
+    }
+}
