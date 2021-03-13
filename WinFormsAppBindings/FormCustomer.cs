@@ -18,9 +18,20 @@ namespace WinFormsAppBindings
         public FormCustomer()
         {
             InitializeComponent();
+
             _customerPresenter = new CustomerPresenter(this);
+
             _customerTypePresenter = new CustomerTypePresenter(_customerType);
+
             setDataBinds();
+
+            this.FormClosed += (sender, e) => {
+
+                _customerPresenter.Dispose();
+
+                _customerTypePresenter.Dispose();
+
+            };
         }
 
         public int Id { get; set; }
@@ -161,5 +172,7 @@ namespace WinFormsAppBindings
             }
            
         }
+
+        
     }
 }

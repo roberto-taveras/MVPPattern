@@ -17,9 +17,20 @@ namespace WinFormsAppBindings
         public FormVendor()
         {
             InitializeComponent();
+
             _vendorPresenter = new VendorPresenter(this);
+
             _vendorTypePresenter = new VendorTypePresenter(_vendorType);
+
             setDataBinds();
+
+            this.FormClosed += (sender, e) => {
+
+                _vendorPresenter.Dispose();
+
+                _vendorTypePresenter.Dispose();
+
+            };
         }
 
         public int Id { get; set; }

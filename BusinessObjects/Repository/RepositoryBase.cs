@@ -10,7 +10,7 @@ using System.Linq.Expressions;
 namespace BusinessObjects.Repository
 {
 
-    public class RepositoryBase<TInterface, TEntity> : IRepositoryBase<TInterface, TEntity> where TEntity : class, TInterface, new()
+    public class RepositoryBase<TInterface, TEntity> :IDisposable, IRepositoryBase<TInterface, TEntity> where TEntity : class, TInterface, new()
     {
         public event RefreshData OnRefresh = null;
         TEntity cust = new TEntity();
@@ -20,6 +20,7 @@ namespace BusinessObjects.Repository
         protected DbSet<TEntity> _dbSet;
         public event Validate BeforeSave;
         public event Validate AfterSave;
+        private bool _isDisposed = false;
         public RepositoryBase(TInterface sender)
         {
 
@@ -162,12 +163,22 @@ namespace BusinessObjects.Repository
         }
         protected virtual void afterSave()
         {
-
+            
         }
 
+        
         protected virtual void afterDelete()
         {
 
+        }
+
+        public virtual void Dispose()
+        {
+            if (!_isDisposed)
+            {
+                _context.Dispose();
+                _isDisposed = true;
+            }
         }
     }
 }
