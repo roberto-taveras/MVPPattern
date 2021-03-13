@@ -176,8 +176,8 @@ namespace BusinessObjects.Repository
         {
             if (!_isDisposed)
             {
-                _context.Dispose();
                 _isDisposed = true;
+                _context.Dispose();
             }
         }
     }
