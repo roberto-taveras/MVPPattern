@@ -90,9 +90,14 @@ namespace WinFormsAppBindings
             catch (Exception ex)
             {
 
-                MessageBox.Show($"Se produjo una excepcion {ex.Message}", "Aviso..!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                showException(ex);
             }
             
+        }
+
+        private void showException(Exception ex)
+        {
+            MessageBox.Show($"Se produjo una excepcion {ex.Message}", "Aviso..!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void numericUpDownCodigo_ValueChanged(object sender, EventArgs e)
@@ -104,7 +109,7 @@ namespace WinFormsAppBindings
             catch (Exception ex)
             {
 
-                MessageBox.Show($"Se produjo una excepcion {ex.Message}", "Aviso..!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                showException(ex);
             }
             
 
@@ -125,7 +130,7 @@ namespace WinFormsAppBindings
             catch (Exception ex)
             {
 
-                MessageBox.Show($"Se produjo una excepcion {ex.Message}", "Aviso..!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                showException(ex);
             }
            
         }
@@ -146,9 +151,9 @@ namespace WinFormsAppBindings
             catch (Exception ex)
             {
 
-                MessageBox.Show($"Se produjo una excepcion {ex.Message}", "Aviso..!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                showException(ex);
             }
-           ;
+           
 
         }
 
@@ -166,7 +171,7 @@ namespace WinFormsAppBindings
             catch (Exception ex)
             {
 
-                MessageBox.Show($"Se produjo una excepcion {ex.Message}", "Aviso..!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                showException(ex);
             }
            
         }
