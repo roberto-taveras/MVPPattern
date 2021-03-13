@@ -1,4 +1,6 @@
-﻿namespace BusinessObjects.Interfaces
+﻿using BusinessObjects.Models;
+
+namespace BusinessObjects.Interfaces
 {
     public interface IVendor
     {        
@@ -7,6 +9,7 @@
         string Adress { get; set; }
         bool Status { get; set; }
         int VendorTypeId { get; set; }
+        VendorType VendorType { get; set; }
 
     }
 }

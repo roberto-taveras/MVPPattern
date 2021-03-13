@@ -1,4 +1,6 @@
-﻿namespace BusinessObjects.Interfaces
+﻿using BusinessObjects.Models;
+
+namespace BusinessObjects.Interfaces
 {
     public interface ICustomer
     {        
@@ -7,6 +9,7 @@
         string Adress { get; set; }
         bool Status { get; set; }
         int CustomerTypeId { get; set; }
+        CustomerType CustomerType { get; set; }
 
     }
 }

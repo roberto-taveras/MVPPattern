@@ -8,5 +8,6 @@ namespace BusinessObjects.Models
         public string Adress { get; set; }
         public bool Status { get; set; }
         public int VendorTypeId { get; set; }
+        public virtual VendorType VendorType { get; set; }
     }
 }

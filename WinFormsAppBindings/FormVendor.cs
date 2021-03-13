@@ -39,8 +39,9 @@ namespace WinFormsAppBindings
         public string Adress { get; set; }
         public bool Status { get; set; } = true;
         public int VendorTypeId { get; set; }
+        public VendorType VendorType { get; set; }
         #endregion
- 
+
         private void setDataBinds()
         {
             _bindingSourceVendor.DataSource = this;

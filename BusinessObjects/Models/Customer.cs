@@ -9,6 +9,7 @@ namespace BusinessObjects.Models
         public string Adress { get; set; }
         public bool Status { get; set; }
         public int CustomerTypeId { get; set; }
+        public virtual CustomerType CustomerType { get; set; }
 
     }
 }
