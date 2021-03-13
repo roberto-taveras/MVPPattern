@@ -11,7 +11,7 @@ namespace WinFormsAppBindings
     {
 
         private readonly VendorPresenter _vendorPresenter;
-        private readonly BindingSource bindingSourceVendor = new BindingSource();
+        private readonly BindingSource _bindingSourceVendor = new BindingSource();
         private readonly IVendorType _vendorType = new VendorType();
         private readonly VendorTypePresenter _vendorTypePresenter;
         public FormVendor()
@@ -30,30 +30,30 @@ namespace WinFormsAppBindings
 
         private void setDataBinds()
         {
-            bindingSourceVendor.DataSource = this;
+            _bindingSourceVendor.DataSource = this;
 
             this.textBoxId.DataBindings.Add(new Binding("Text",
-                                  bindingSourceVendor,
+                                  _bindingSourceVendor,
                                   "Id", true, DataSourceUpdateMode.OnPropertyChanged));
 
 
             this.textBoxNombre.DataBindings.Add(new Binding("Text",
-                                   bindingSourceVendor,
+                                   _bindingSourceVendor,
                                    "CustName",
                                     true, DataSourceUpdateMode.OnPropertyChanged));
 
             this.textBoxDireccion.DataBindings.Add(new Binding("Text",
-                                   bindingSourceVendor,
+                                   _bindingSourceVendor,
                                    "Adress",
                                     true, DataSourceUpdateMode.OnPropertyChanged));
 
             this.checkBoxActivo.DataBindings.Add(new Binding("Checked",
-                                  bindingSourceVendor,
+                                  _bindingSourceVendor,
                                   "Status",
                                    true, DataSourceUpdateMode.OnPropertyChanged));
 
             this.comboBoxVendorType.DataBindings.Add(new Binding("SelectedValue",
-                                bindingSourceVendor,
+                                _bindingSourceVendor,
                                 "VendorTypeId",
                                  true, DataSourceUpdateMode.OnPropertyChanged));
 
@@ -62,7 +62,7 @@ namespace WinFormsAppBindings
 
             fillComboBox();
 
-            _vendorPresenter.OnRefresh += () => { bindingSourceVendor.ResetBindings(false); };
+            _vendorPresenter.OnRefresh += () => { _bindingSourceVendor.ResetBindings(false); };
             _vendorPresenter.BeforeSave += () => { Console.WriteLine("Puedes poner algo aqui antes de salvar"); };
             _vendorPresenter.AfterSave += () => { Console.WriteLine("Puedes poner algo aqui despues de salvar"); };
 
@@ -119,7 +119,7 @@ namespace WinFormsAppBindings
 
         private void RefreshData()
         {
-            bindingSourceVendor.ResetBindings(false);
+            _bindingSourceVendor.ResetBindings(false);
         }
 
 

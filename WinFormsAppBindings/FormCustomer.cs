@@ -12,7 +12,7 @@ namespace WinFormsAppBindings
 
         private readonly CustomerPresenter _customerPresenter;
         private readonly CustomerTypePresenter _customerTypePresenter;
-        private readonly BindingSource bindingSourceCustomer = new BindingSource();
+        private readonly BindingSource _bindingSourceCustomer = new BindingSource();
         private readonly ICustomerType _customerType = new CustomerType();
 
         public FormCustomer()
@@ -31,30 +31,30 @@ namespace WinFormsAppBindings
 
         private void setDataBinds()
         {
-            bindingSourceCustomer.DataSource = this;
+            _bindingSourceCustomer.DataSource = this;
 
             this.textBoxId.DataBindings.Add(new Binding("Text",
-                                  bindingSourceCustomer,
+                                  _bindingSourceCustomer,
                                   "Id", true, DataSourceUpdateMode.OnPropertyChanged));
 
 
             this.textBoxNombre.DataBindings.Add(new Binding("Text",
-                                   bindingSourceCustomer,
+                                   _bindingSourceCustomer,
                                    "CustName",
                                     true, DataSourceUpdateMode.OnPropertyChanged));
 
             this.textBoxDireccion.DataBindings.Add(new Binding("Text",
-                                   bindingSourceCustomer,
+                                   _bindingSourceCustomer,
                                    "Adress",
                                     true, DataSourceUpdateMode.OnPropertyChanged));
 
             this.checkBoxActivo.DataBindings.Add(new Binding("Checked",
-                                  bindingSourceCustomer,
+                                  _bindingSourceCustomer,
                                   "Status",
                                    true, DataSourceUpdateMode.OnPropertyChanged));
 
            this.comboBoxCustomerType.DataBindings.Add(new Binding("SelectedValue",
-                                bindingSourceCustomer,
+                                _bindingSourceCustomer,
                                 "CustomerTypeId",
                                  true, DataSourceUpdateMode.OnPropertyChanged));
 
@@ -63,7 +63,7 @@ namespace WinFormsAppBindings
 
             fillComboBox();
 
-            _customerPresenter.OnRefresh += () => { bindingSourceCustomer.ResetBindings(false); };
+            _customerPresenter.OnRefresh += () => { _bindingSourceCustomer.ResetBindings(false); };
             _customerPresenter.BeforeSave += () => { Console.WriteLine("Puedes poner algo aqui antes de salvar"); };
             _customerPresenter.AfterSave += () => { Console.WriteLine("Puedes poner algo aqui despues de salvar"); };
 
@@ -122,7 +122,7 @@ namespace WinFormsAppBindings
 
         private void RefreshData()
         {
-            bindingSourceCustomer.ResetBindings(false);
+            _bindingSourceCustomer.ResetBindings(false);
         }
 
 
