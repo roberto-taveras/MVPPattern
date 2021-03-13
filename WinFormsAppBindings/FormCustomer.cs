@@ -40,7 +40,6 @@ namespace WinFormsAppBindings
         public string Adress { get; set; }
         public bool Status { get; set; } = true;
         public int CustomerTypeId { get; set ; }
-
         #endregion
 
         private void setDataBinds()
