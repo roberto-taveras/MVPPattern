@@ -91,9 +91,8 @@ namespace BusinessObjects.Repository
                            e.State == EntityState.Modified ||
                            e.State == EntityState.Deleted)
                .ToList();
-
-            foreach (var entry in changedEntriesCopy)
-                entry.State = EntityState.Detached;
+            changedEntriesCopy.ForEach((a) => { a.State = EntityState.Detached; });
+          
         }
 
         public void Add()
