@@ -25,6 +25,7 @@ namespace BusinessObjects.Repository
         {
 
             _dbSet = _context.Set<TEntity>();
+
             _interfaceInstance = interfaceInstance;
 
             Add();
