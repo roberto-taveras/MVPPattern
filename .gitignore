@@ -9,3 +9,4 @@ BusinessObjects/bin/Debug/EntityFramework.xml
 WinFormsAppBindings/obj/
 WinFormsAppBindings/bin/
 BusinessObjects/obj/
+*.v2
