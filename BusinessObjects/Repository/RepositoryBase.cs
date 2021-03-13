@@ -15,17 +15,17 @@ namespace BusinessObjects.Repository
         public event RefreshData OnRefresh = null;
         public event Validate BeforeSave;
         public event Validate AfterSave;
-        TEntity cust = new TEntity();
         private readonly CourseContext<TEntity> _context = CourseContext<TEntity>.Factory();
         private readonly TInterface _interfaceInstance;
         private readonly HelperAssignProperty<TInterface, TInterface> _helperAssignProperty = new HelperAssignProperty<TInterface, TInterface>();
-        protected DbSet<TEntity> _dbSet;
+        protected readonly DbSet<TEntity> _dbSet;
         private bool _isDisposed = false;
-        public RepositoryBase(TInterface sender)
+        private TEntity cust = new TEntity();
+        public RepositoryBase(TInterface interfaceInstance)
         {
 
             _dbSet = _context.Set<TEntity>();
-            _interfaceInstance = sender;
+            _interfaceInstance = interfaceInstance;
 
             Add();
         }
