@@ -21,7 +21,7 @@ namespace BusinessObjects.Helpers
                 catch (Exception ex)
                 {
 
-                    throw new Exception($"Hay un error de tipos con la propiedad {p.Name}  verifique {instanceToSet} y {instanceFrom}" );
+                    throw new Exception($"Hay un error de tipos con la propiedad {p.Name}  verifique {instanceToSet} y {instanceFrom} Exception {ex.Message}" );
                 }
               
             }
