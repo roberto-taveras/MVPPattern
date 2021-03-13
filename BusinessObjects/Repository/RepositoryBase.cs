@@ -13,8 +13,8 @@ namespace BusinessObjects.Repository
     public class RepositoryBase<TInterface, TEntity> :IDisposable, IRepositoryBase<TInterface, TEntity> where TEntity : class, TInterface, new()
     {
         public event RefreshData OnRefresh = null;
-        public event Validate BeforeSave;
-        public event Validate AfterSave;
+        public event Validate BeforeSave = null;
+        public event Validate AfterSave = null;
         private readonly CourseContext<TEntity> _context = CourseContext<TEntity>.Factory();
         private readonly TInterface _interfaceInstance;
         private readonly HelperAssignProperty<TInterface, TInterface> _helperAssignProperty = new HelperAssignProperty<TInterface, TInterface>();
