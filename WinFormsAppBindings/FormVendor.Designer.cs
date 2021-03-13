@@ -40,45 +40,46 @@ namespace WinFormsAppBindings
             this.checkBoxActivo = new System.Windows.Forms.CheckBox();
             this.buttonBorrar = new System.Windows.Forms.Button();
             this.comboBoxVendorType = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(52, 38);
+            this.label1.Location = new System.Drawing.Point(101, 40);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(50, 20);
+            this.label1.Size = new System.Drawing.Size(58, 20);
             this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
+            this.label1.Text = "Codigo";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(52, 81);
+            this.label2.Location = new System.Drawing.Point(95, 79);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(50, 20);
+            this.label2.Size = new System.Drawing.Size(64, 20);
             this.label2.TabIndex = 1;
-            this.label2.Text = "label2";
+            this.label2.Text = "Nombre";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(52, 129);
+            this.label3.Location = new System.Drawing.Point(60, 204);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(50, 20);
+            this.label3.Size = new System.Drawing.Size(99, 20);
             this.label3.TabIndex = 2;
-            this.label3.Text = "label3";
+            this.label3.Text = "Tipo Suplidor";
             // 
             // textBoxNombre
             // 
-            this.textBoxNombre.Location = new System.Drawing.Point(119, 81);
+            this.textBoxNombre.Location = new System.Drawing.Point(167, 77);
             this.textBoxNombre.Name = "textBoxNombre";
             this.textBoxNombre.Size = new System.Drawing.Size(314, 27);
             this.textBoxNombre.TabIndex = 2;
             // 
             // textBoxDireccion
             // 
-            this.textBoxDireccion.Location = new System.Drawing.Point(119, 114);
+            this.textBoxDireccion.Location = new System.Drawing.Point(167, 114);
             this.textBoxDireccion.Name = "textBoxDireccion";
             this.textBoxDireccion.Size = new System.Drawing.Size(314, 27);
             this.textBoxDireccion.TabIndex = 3;
@@ -105,7 +106,7 @@ namespace WinFormsAppBindings
             // 
             // textBoxId
             // 
-            this.textBoxId.Location = new System.Drawing.Point(119, 38);
+            this.textBoxId.Location = new System.Drawing.Point(167, 38);
             this.textBoxId.Name = "textBoxId";
             this.textBoxId.Size = new System.Drawing.Size(314, 27);
             this.textBoxId.TabIndex = 1;
@@ -115,7 +116,7 @@ namespace WinFormsAppBindings
             // checkBoxActivo
             // 
             this.checkBoxActivo.AutoSize = true;
-            this.checkBoxActivo.Location = new System.Drawing.Point(119, 159);
+            this.checkBoxActivo.Location = new System.Drawing.Point(166, 161);
             this.checkBoxActivo.Name = "checkBoxActivo";
             this.checkBoxActivo.Size = new System.Drawing.Size(77, 24);
             this.checkBoxActivo.TabIndex = 6;
@@ -136,16 +137,26 @@ namespace WinFormsAppBindings
             // 
             this.comboBoxVendorType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxVendorType.FormattingEnabled = true;
-            this.comboBoxVendorType.Location = new System.Drawing.Point(119, 199);
+            this.comboBoxVendorType.Location = new System.Drawing.Point(167, 199);
             this.comboBoxVendorType.Name = "comboBoxVendorType";
             this.comboBoxVendorType.Size = new System.Drawing.Size(314, 28);
             this.comboBoxVendorType.TabIndex = 8;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(87, 118);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(72, 20);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Direccion";
             // 
             // FormVendor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1032, 509);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.comboBoxVendorType);
             this.Controls.Add(this.buttonBorrar);
             this.Controls.Add(this.checkBoxActivo);
@@ -178,6 +189,7 @@ namespace WinFormsAppBindings
         private System.Windows.Forms.CheckBox checkBoxActivo;
         private System.Windows.Forms.Button buttonBorrar;
         private System.Windows.Forms.ComboBox comboBoxVendorType;
+        private System.Windows.Forms.Label label5;
     }
 }
 
