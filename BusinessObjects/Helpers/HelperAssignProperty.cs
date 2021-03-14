@@ -16,14 +16,13 @@ namespace BusinessObjects.Helpers
                     throw new InvalidCastException($"La propiedad {p.Name} de {instanceToSet} no existe en {instanceFrom} ..!!");
 
                 if(p.GetType() !=  result.GetType())
-                    throw new InvalidCastException($"La propiedad {p.Name} toSet tiene un tipo de dato { p.GetType()} y fromSet tiene un tipo de dato {result.GetType()}  {instanceFrom} ..!!");
+                    throw new InvalidCastException($"La propiedad {p.Name} {instanceToSet} tiene un tipo de dato { p.GetType()} y {instanceFrom} tiene un tipo de dato {result.GetType()}  {instanceFrom} ..!!");
                 try
                 {
                     p.SetValue(toSet, result.GetValue(fromSet,null), null);
                 }
                 catch (Exception ex)
                 {
-
                     throw new Exception($"Hay un error de tipos con la propiedad {p.Name}  verifique {instanceToSet} y {instanceFrom} Exception {ex.Message}" );
                 }
               
