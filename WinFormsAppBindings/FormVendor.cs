@@ -100,22 +100,6 @@ namespace WinFormsAppBindings
         {
             MessageBox.Show($"Se produjo una excepcion {ex.Message}", "Aviso..!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
-
-        private void numericUpDownCodigo_ValueChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                _vendorPresenter.FindById(this.Id);
-            }
-            catch (Exception ex)
-            {
-
-                showException(ex);
-            }
-            
-
-        }
-
         private void buttonNuevo_Click(object sender, EventArgs e)
         {
             _vendorPresenter.Add();
