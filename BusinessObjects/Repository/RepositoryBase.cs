@@ -39,12 +39,12 @@ namespace BusinessObjects.Repository
         public virtual IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, string includeProperties = "")
         {
             IQueryable<TEntity> query = _dbSet;
+
             if (filter != null)
             {
                 query = query.Where(filter);
 
             }
-
 
             if (includeProperties != null)
             {
@@ -91,6 +91,7 @@ namespace BusinessObjects.Repository
                            e.State == EntityState.Modified ||
                            e.State == EntityState.Deleted)
                .ToList();
+
             changedEntriesCopy.ForEach((a) => { a.State = EntityState.Detached; });
           
         }
@@ -98,8 +99,11 @@ namespace BusinessObjects.Repository
         public void Add()
         {
             detachAllEntities();
+
             _entity = new TEntity();
+
             scatter();
+
             _dbSet.Add(_entity);
         }
 
@@ -131,6 +135,7 @@ namespace BusinessObjects.Repository
             if (_entity != null)
             {
                 scatter();
+
                 _context.Entry(_entity).State = EntityState.Modified;
 
                 return;
@@ -151,12 +156,19 @@ namespace BusinessObjects.Repository
         public virtual void Save()
         {
             gather();
+
             extendedValidations();
+
             beforeSave();
+
             BeforeSave?.Invoke();
+
             var result = _context.SaveChanges();
+
             afterSave();
+
             AfterSave?.Invoke();
+
             scatter();
 
 
