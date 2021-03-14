@@ -1,7 +1,7 @@
 # MVPPattern
 - Proyecto de ejemplo usando:
 - Patrón de diseño MVP(Model-View-Presenter)
-- Refletion
+- Reflection
 - Delegates
 - Events 
 - Repositorio Generico
