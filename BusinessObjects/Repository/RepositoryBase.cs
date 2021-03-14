@@ -69,7 +69,7 @@ namespace BusinessObjects.Repository
         private void gather()
         {
 
-            _helperAssignProperty.AssingnProperty("entity", "interface", _entity, _interfaceInstance);
+            _helperAssignProperty.AssingnProperty("entity_gather", "from_interface", _entity, _interfaceInstance);
 
             OnRefresh?.Invoke();
         }
@@ -77,7 +77,7 @@ namespace BusinessObjects.Repository
         private void scatter()
         {
 
-            _helperAssignProperty.AssingnProperty("interface", "entity", _interfaceInstance, _entity);
+            _helperAssignProperty.AssingnProperty("interface_scatter", "from_entity", _interfaceInstance, _entity);
 
             OnRefresh?.Invoke();
 
