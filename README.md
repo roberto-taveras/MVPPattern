@@ -7,4 +7,7 @@
 - Repositorio Generico
 - Inyección de dependencias
 - Databindings en Windows Forms
+- Traducciones
+- Validaciones del modelo
+- Fluent Validations
  
