@@ -20,7 +20,7 @@ namespace BusinessObjects.Repository
         private readonly HelperAssignProperty<TInterface, TInterface> _helperAssignProperty = new HelperAssignProperty<TInterface, TInterface>();
         protected readonly DbSet<TEntity> _dbSet;
         private bool _isDisposed = false;
-        private TEntity entity = new TEntity();
+        private TEntity _entity = new TEntity();
         public RepositoryBase(TInterface interfaceInstance)
         {
 
@@ -69,7 +69,7 @@ namespace BusinessObjects.Repository
         private void gather()
         {
 
-            _helperAssignProperty.AssingnProperty("entity", "interface", entity, _interfaceInstance);
+            _helperAssignProperty.AssingnProperty("entity", "interface", _entity, _interfaceInstance);
 
             OnRefresh?.Invoke();
         }
@@ -77,7 +77,7 @@ namespace BusinessObjects.Repository
         private void scatter()
         {
 
-            _helperAssignProperty.AssingnProperty("interface", "entity", _interfaceInstance, entity);
+            _helperAssignProperty.AssingnProperty("interface", "entity", _interfaceInstance, _entity);
 
             OnRefresh?.Invoke();
 
@@ -98,9 +98,9 @@ namespace BusinessObjects.Repository
         public void Add()
         {
             detachAllEntities();
-            entity = new TEntity();
+            _entity = new TEntity();
             scatter();
-            _dbSet.Add(entity);
+            _dbSet.Add(_entity);
         }
 
         public virtual void Delete(int id)
@@ -108,10 +108,10 @@ namespace BusinessObjects.Repository
             if (id < 1)
                 return;
 
-            if (_context.Entry(entity).State == EntityState.Modified)
+            if (_context.Entry(_entity).State == EntityState.Modified)
             {
 
-                _context.Entry(entity).State = EntityState.Deleted;
+                _context.Entry(_entity).State = EntityState.Deleted;
 
                 Save();
 
@@ -126,12 +126,12 @@ namespace BusinessObjects.Repository
         {
             detachAllEntities();
 
-            entity = _dbSet.Find(id);
+            _entity = _dbSet.Find(id);
 
-            if (entity != null)
+            if (_entity != null)
             {
                 scatter();
-                _context.Entry(entity).State = EntityState.Modified;
+                _context.Entry(_entity).State = EntityState.Modified;
 
                 return;
             }
