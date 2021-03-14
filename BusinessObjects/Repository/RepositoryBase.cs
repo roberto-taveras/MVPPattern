@@ -3,6 +3,7 @@ using BusinessObjects.Helpers;
 using BusinessObjects.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
@@ -15,18 +16,25 @@ namespace BusinessObjects.Repository
         public event RefreshData OnRefresh = null;
         public event Validate BeforeSave = null;
         public event Validate AfterSave = null;
+        protected readonly DbSet<TEntity> _dbSet;
+        protected readonly HelperValidateEntity _helperValidateEntity;
+        protected TEntity _entity = new TEntity();
+        protected ICollection<ValidationResult> _validationResult;
         private readonly CourseContext<TEntity> _context = CourseContext<TEntity>.Factory();
         private readonly TInterface _interfaceInstance;
         private readonly HelperAssignProperty<TInterface, TInterface> _helperAssignProperty = new HelperAssignProperty<TInterface, TInterface>();
-        protected readonly DbSet<TEntity> _dbSet;
         private bool _isDisposed = false;
-        private TEntity _entity = new TEntity();
-        public RepositoryBase(TInterface interfaceInstance)
+
+
+        public RepositoryBase(CourseContext<TEntity> context,TInterface interfaceInstance)
         {
+            _context = context;
 
             _dbSet = _context.Set<TEntity>();
 
             _interfaceInstance = interfaceInstance;
+
+            _helperValidateEntity = new HelperValidateEntity();
 
             Add();
         }
@@ -157,7 +165,8 @@ namespace BusinessObjects.Repository
         {
             gather();
 
-            extendedValidations();
+            if (!executeValidations())
+                return;
 
             beforeSave();
 
@@ -173,6 +182,41 @@ namespace BusinessObjects.Repository
 
 
         }
+
+        private bool validateService()
+        {
+            return _helperValidateEntity.ValidateService(_entity);
+        }
+        private bool executeValidations()
+        {
+            var _notifyUI = _interfaceInstance as INotifyUI;
+
+            if (_notifyUI == null)
+                throw new Exception("El control inyectado a este presenter debe implementar la interface INotifyUI");
+
+            _validationResult = new List<ValidationResult>();
+
+            _notifyUI.ClearErrorsValidations(_validationResult);
+
+            if (!validateService())
+            {
+                _validationResult = _helperValidateEntity.ValidationResult;
+                _notifyUI.NotifyErrors(_validationResult);
+                return false;
+            }
+
+           
+
+            extendedValidations();
+
+            if (_validationResult.Count != 0)
+            {
+                _notifyUI.NotifyErrors(_validationResult);
+                return false;
+            }
+            return true;
+        }
+
         protected virtual void afterSave()
         {
             

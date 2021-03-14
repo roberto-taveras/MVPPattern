@@ -8,7 +8,7 @@ namespace BusinessObjects.Presenters
 {
     public class CustomerTypePresenter: RepositoryBase<ICustomerType, CustomerType>
     {
-        public CustomerTypePresenter(ICustomerType customerType) : base(customerType)
+        public CustomerTypePresenter(CourseContext<CustomerType> context,ICustomerType customerType) : base(context,customerType)
         {
 
         }

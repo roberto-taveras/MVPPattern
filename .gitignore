@@ -10,3 +10,5 @@ WinFormsAppBindings/obj/
 WinFormsAppBindings/bin/
 BusinessObjects/obj/
 *.v2
+BusinessObjects/bin/
+packages/

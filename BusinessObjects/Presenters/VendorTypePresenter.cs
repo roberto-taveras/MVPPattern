@@ -8,7 +8,8 @@ namespace BusinessObjects.Presenters
 {
     public class VendorTypePresenter : RepositoryBase<IVendorType, VendorType>
     {
-        public VendorTypePresenter(IVendorType vendorType) : base(vendorType)
+     
+        public VendorTypePresenter(CourseContext<VendorType> context,IVendorType vendorType) : base(context,vendorType)
         {
 
         }

@@ -3,10 +3,18 @@ using System;
 using System.Windows.Forms;
 using BusinessObjects.Models;
 using BusinessObjects.Presenters;
+using CommonUserControls.Helpers;
+using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
+using BusinessObjects.Context;
+using System.Globalization;
+using System.Threading;
+using System.Resources;
+using BusinessObjects.Resources;
 
 namespace WinFormsAppBindings
 {
-    public partial class FormCustomer : Form,  ICustomer
+    public partial class FormCustomer : Form,ICustomer,INotifyUI
     {
 
 
@@ -14,14 +22,25 @@ namespace WinFormsAppBindings
         private readonly CustomerTypePresenter _customerTypePresenter;
         private readonly BindingSource _bindingSourceCustomer = new BindingSource();
         private readonly ICustomerType _customerType = new CustomerType();
+        private readonly CourseContext<Customer> customerContext;
+        private readonly CourseContext<CustomerType> customerTypeContext;
+        private readonly HelperControlsToValidate _validator;
+        private readonly HelperControlsTranslate _translate;
 
-        public FormCustomer()
+        public FormCustomer(string cultureName)
         {
             InitializeComponent();
 
-            _customerPresenter = new CustomerPresenter(this);
+          
+            BusinessObjectsResourceManager resourceManager = new BusinessObjectsResourceManager(cultureName);
 
-            _customerTypePresenter = new CustomerTypePresenter(_customerType);
+            customerContext = CourseContext<Customer>.Factory();
+
+            customerTypeContext = CourseContext<CustomerType>.Factory();
+
+            _customerPresenter = new CustomerPresenter(customerContext, this);
+
+            _customerTypePresenter = new CustomerTypePresenter(customerTypeContext,_customerType);
 
             setDataBinds();
 
@@ -32,6 +51,11 @@ namespace WinFormsAppBindings
                 _customerTypePresenter.Dispose();
 
             };
+
+            _validator = new HelperControlsToValidate(this);
+            _translate = new HelperControlsTranslate(this,resourceManager);
+            _translate.Translate();
+
         }
 
         #region Properties
@@ -62,7 +86,7 @@ namespace WinFormsAppBindings
                                    "Adress",
                                     true, DataSourceUpdateMode.OnPropertyChanged));
 
-            this.checkBoxActivo.DataBindings.Add(new Binding("Checked",
+            this.checkBoxStatus.DataBindings.Add(new Binding("Checked",
                                   _bindingSourceCustomer,
                                   "Status",
                                    true, DataSourceUpdateMode.OnPropertyChanged));
@@ -81,7 +105,14 @@ namespace WinFormsAppBindings
             _customerPresenter.BeforeSave += () => { Console.WriteLine("Puedes poner algo aqui antes de salvar"); };
             _customerPresenter.AfterSave += () => { Console.WriteLine("Puedes poner algo aqui despues de salvar"); };
 
+            setTags();
+        }
 
+        private void setTags()
+        {
+            this.textBoxNombre.Tag = nameof(Customer.CustName);
+            this.textBoxDireccion.Tag = nameof(Customer.Adress);
+            this.comboBoxCustomerType.Tag = nameof(Customer.CustomerTypeId);
         }
 
         private void fillComboBox()
@@ -164,6 +195,15 @@ namespace WinFormsAppBindings
            
         }
 
-        
+        public void NotifyErrors(ICollection<ValidationResult> sender)
+        {
+           
+            _validator.ValidateMembers(sender);
+        }
+
+        public void  ClearErrorsValidations(ICollection<ValidationResult> sender)
+        {
+            _validator.ClearErrors(sender);
+        }
     }
 }

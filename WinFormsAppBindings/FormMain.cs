@@ -24,14 +24,15 @@ namespace WinFormsAppBindings
 
         private void toolStripMenuItemCustome_Click(object sender, EventArgs e)
         {
-            FormCustomer customer = new FormCustomer();
+            //"es-DO" espanol
+            FormCustomer customer = new FormCustomer("en-US");
             customer.Show();
 
         }
 
         private void toolStripMenuItemVendor_Click(object sender, EventArgs e)
         {
-            FormVendor formVendor = new FormVendor();
+            FormVendor formVendor = new FormVendor("en-US");
             formVendor.Show();
         }
     }

@@ -4,23 +4,41 @@ using System;
 using System.Windows.Forms;
 using BusinessObjects.Models;
 using BusinessObjects.Presenters;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using CommonUserControls.Helpers;
+using BusinessObjects.Context;
+using System.Globalization;
+using System.Threading;
+using System.Resources;
+using BusinessObjects.Resources;
 
 namespace WinFormsAppBindings
 {
-    public partial class FormVendor : Form,  IVendor
+    public partial class FormVendor : Form,  IVendor ,INotifyUI
     {
 
         private readonly VendorPresenter _vendorPresenter;
         private readonly BindingSource _bindingSourceVendor = new BindingSource();
         private readonly IVendorType _vendorType = new VendorType();
         private readonly VendorTypePresenter _vendorTypePresenter;
-        public FormVendor()
+        private readonly CourseContext<Vendor> vendorContext;
+        private readonly CourseContext<VendorType> vendorTypeContext;
+        private readonly HelperControlsToValidate _validator;
+        private readonly HelperControlsTranslate _translate;
+        public FormVendor(string cultureName)
         {
             InitializeComponent();
 
-            _vendorPresenter = new VendorPresenter(this);
+            BusinessObjectsResourceManager resourceManager = new BusinessObjectsResourceManager(cultureName);
 
-            _vendorTypePresenter = new VendorTypePresenter(_vendorType);
+            vendorContext = CourseContext<Vendor>.Factory();
+
+            vendorTypeContext = CourseContext<VendorType>.Factory();
+
+            _vendorPresenter = new VendorPresenter(vendorContext,this);
+
+            _vendorTypePresenter = new VendorTypePresenter(vendorTypeContext,_vendorType);
 
             setDataBinds();
 
@@ -31,11 +49,17 @@ namespace WinFormsAppBindings
                 _vendorTypePresenter.Dispose();
 
             };
+
+            _validator = new HelperControlsToValidate(this);
+            _translate = new HelperControlsTranslate(this, resourceManager);
+            _translate.Translate();
+
         }
+
 
         #region Properties
         public int Id { get; set; }
-        public string CustName { get; set; }
+        public string VendName { get; set; }
         public string Adress { get; set; }
         public bool Status { get; set; } = true;
         public int VendorTypeId { get; set; }
@@ -53,7 +77,7 @@ namespace WinFormsAppBindings
 
             this.textBoxNombre.DataBindings.Add(new Binding("Text",
                                    _bindingSourceVendor,
-                                   "CustName",
+                                   "VendName",
                                     true, DataSourceUpdateMode.OnPropertyChanged));
 
             this.textBoxDireccion.DataBindings.Add(new Binding("Text",
@@ -61,7 +85,7 @@ namespace WinFormsAppBindings
                                    "Adress",
                                     true, DataSourceUpdateMode.OnPropertyChanged));
 
-            this.checkBoxActivo.DataBindings.Add(new Binding("Checked",
+            this.checkBoxStatus.DataBindings.Add(new Binding("Checked",
                                   _bindingSourceVendor,
                                   "Status",
                                    true, DataSourceUpdateMode.OnPropertyChanged));
@@ -80,6 +104,14 @@ namespace WinFormsAppBindings
             _vendorPresenter.BeforeSave += () => { Console.WriteLine("Puedes poner algo aqui antes de salvar"); };
             _vendorPresenter.AfterSave += () => { Console.WriteLine("Puedes poner algo aqui despues de salvar"); };
 
+            setTags();
+        }
+
+        private void setTags()
+        {
+            this.textBoxNombre.Tag = nameof(Vendor.VendName);
+            this.textBoxDireccion.Tag = nameof(Vendor.Adress);
+            this.comboBoxVendorType.Tag = nameof(Vendor.VendorTypeId);
         }
 
         private void fillComboBox()
@@ -159,6 +191,22 @@ namespace WinFormsAppBindings
                 showException(ex);
             }
            
+        }
+
+        public void NotifyErrors(ICollection<ValidationResult> sender)
+        {
+
+            _validator.ValidateMembers(sender);
+        }
+
+        public void ClearErrorsValidations(ICollection<ValidationResult> sender)
+        {
+            _validator.ClearErrors(sender);
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
