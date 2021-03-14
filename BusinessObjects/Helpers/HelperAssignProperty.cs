@@ -13,7 +13,7 @@ namespace BusinessObjects.Helpers
             {
                 var result = propertiestFromSet.Where(k => k.Name == p.Name).FirstOrDefault();
                 if (result == null)
-                    throw new InvalidCastException($"La propiedad {p.Name} verifique la instancia {instanceFrom} !!");
+                    throw new InvalidCastException($"La propiedad {p.Name} toSet tiene un tipo de dato { p.GetType()} y fromSet tiene un tipo de dato {result.GetType()}  {instanceFrom} !!");
 
                 if(p.GetType() !=  result.GetType())
                     throw new InvalidCastException($"La propiedad {p.Name} y  la instancia {instanceFrom} tienen tipos de datos diferentes !!");
