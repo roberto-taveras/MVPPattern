@@ -1,4 +1,10 @@
 # MVPPattern
-- Proyecto de ejemplo usando pattern MVP,Generics,Refletion,Delegates,Events en Windows Forms
+- Proyecto de ejemplo usando:
+- Patrón de diseño MVP(Model-View-Presenter)
+- Refletion
+- Delegates
+- Events 
 - Repositorio Generico
-- Databindings
+- Inyección de dependencias
+- Databindings en Windows Forms
+ 
