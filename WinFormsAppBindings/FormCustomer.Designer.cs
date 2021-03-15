@@ -46,29 +46,38 @@ namespace WinFormsAppBindings
             // labelId
             // 
             this.labelId.AutoSize = true;
-            this.labelId.Location = new System.Drawing.Point(111, 49);
+            this.labelId.Location = new System.Drawing.Point(110, 51);
             this.labelId.Name = "labelId";
+            this.labelId.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.labelId.Size = new System.Drawing.Size(58, 20);
             this.labelId.TabIndex = 0;
             this.labelId.Text = "Codigo";
+            this.labelId.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // labelName
             // 
             this.labelName.AutoSize = true;
-            this.labelName.Location = new System.Drawing.Point(105, 88);
+            this.labelName.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labelName.Location = new System.Drawing.Point(104, 90);
             this.labelName.Name = "labelName";
+            this.labelName.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.labelName.Size = new System.Drawing.Size(64, 20);
             this.labelName.TabIndex = 1;
             this.labelName.Text = "Nombre";
+            this.labelName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // labelCustomerTypeId
             // 
             this.labelCustomerTypeId.AutoSize = true;
-            this.labelCustomerTypeId.Location = new System.Drawing.Point(59, 204);
+            this.labelCustomerTypeId.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labelCustomerTypeId.Location = new System.Drawing.Point(58, 204);
             this.labelCustomerTypeId.Name = "labelCustomerTypeId";
+            this.labelCustomerTypeId.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.labelCustomerTypeId.Size = new System.Drawing.Size(110, 20);
             this.labelCustomerTypeId.TabIndex = 2;
             this.labelCustomerTypeId.Text = "Tipo de Cliente";
+            this.labelCustomerTypeId.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelCustomerTypeId.UseMnemonic = false;
             // 
             // textBoxNombre
             // 
@@ -76,6 +85,7 @@ namespace WinFormsAppBindings
             this.textBoxNombre.Name = "textBoxNombre";
             this.textBoxNombre.Size = new System.Drawing.Size(314, 27);
             this.textBoxNombre.TabIndex = 2;
+            this.textBoxNombre.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBoxDireccion
             // 
@@ -83,6 +93,7 @@ namespace WinFormsAppBindings
             this.textBoxDireccion.Name = "textBoxDireccion";
             this.textBoxDireccion.Size = new System.Drawing.Size(314, 27);
             this.textBoxDireccion.TabIndex = 3;
+            this.textBoxDireccion.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // buttonNew
             // 
@@ -111,11 +122,13 @@ namespace WinFormsAppBindings
             this.textBoxId.Size = new System.Drawing.Size(314, 27);
             this.textBoxId.TabIndex = 1;
             this.textBoxId.Text = "  ";
+            this.textBoxId.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxId.Leave += new System.EventHandler(this.textBoxId_Leave);
             // 
             // checkBoxStatus
             // 
             this.checkBoxStatus.AutoSize = true;
+            this.checkBoxStatus.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.checkBoxStatus.Location = new System.Drawing.Point(177, 166);
             this.checkBoxStatus.Name = "checkBoxStatus";
             this.checkBoxStatus.Size = new System.Drawing.Size(77, 24);
@@ -145,11 +158,14 @@ namespace WinFormsAppBindings
             // labelAdress
             // 
             this.labelAdress.AutoSize = true;
-            this.labelAdress.Location = new System.Drawing.Point(97, 128);
+            this.labelAdress.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labelAdress.Location = new System.Drawing.Point(96, 130);
             this.labelAdress.Name = "labelAdress";
+            this.labelAdress.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.labelAdress.Size = new System.Drawing.Size(72, 20);
             this.labelAdress.TabIndex = 11;
             this.labelAdress.Text = "Direccion";
+            this.labelAdress.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // FormCustomer
             // 
@@ -169,6 +185,7 @@ namespace WinFormsAppBindings
             this.Controls.Add(this.labelName);
             this.Controls.Add(this.labelId);
             this.Name = "FormCustomer";
+            this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.Text = "Clientes";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);

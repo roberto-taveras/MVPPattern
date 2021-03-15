@@ -30,7 +30,7 @@ namespace BusinessObjects.Resources
         public string Translate(string sender) 
         {
             
-            return ResourceManager.GetString(sender, Resource.Culture) ?? sender;
+            return (ResourceManager.GetString(sender, Resource.Culture) ?? sender).Trim();
         }
 
     }

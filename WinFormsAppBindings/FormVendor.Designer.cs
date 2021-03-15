@@ -46,29 +46,38 @@ namespace WinFormsAppBindings
             // labelId
             // 
             this.labelId.AutoSize = true;
-            this.labelId.Location = new System.Drawing.Point(101, 40);
+            this.labelId.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labelId.Location = new System.Drawing.Point(105, 40);
             this.labelId.Name = "labelId";
+            this.labelId.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.labelId.Size = new System.Drawing.Size(58, 20);
             this.labelId.TabIndex = 0;
             this.labelId.Text = "Codigo";
+            this.labelId.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // labelName
             // 
             this.labelName.AutoSize = true;
-            this.labelName.Location = new System.Drawing.Point(95, 79);
+            this.labelName.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labelName.Location = new System.Drawing.Point(99, 79);
             this.labelName.Name = "labelName";
+            this.labelName.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.labelName.Size = new System.Drawing.Size(64, 20);
             this.labelName.TabIndex = 1;
             this.labelName.Text = "Nombre";
+            this.labelName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // labelVendorTypeId
             // 
             this.labelVendorTypeId.AutoSize = true;
-            this.labelVendorTypeId.Location = new System.Drawing.Point(60, 204);
+            this.labelVendorTypeId.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labelVendorTypeId.Location = new System.Drawing.Point(64, 201);
             this.labelVendorTypeId.Name = "labelVendorTypeId";
+            this.labelVendorTypeId.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.labelVendorTypeId.Size = new System.Drawing.Size(99, 20);
             this.labelVendorTypeId.TabIndex = 2;
             this.labelVendorTypeId.Text = "Tipo Suplidor";
+            this.labelVendorTypeId.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.labelVendorTypeId.Click += new System.EventHandler(this.label3_Click);
             // 
             // textBoxNombre
@@ -146,11 +155,14 @@ namespace WinFormsAppBindings
             // labelAdress
             // 
             this.labelAdress.AutoSize = true;
-            this.labelAdress.Location = new System.Drawing.Point(87, 118);
+            this.labelAdress.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labelAdress.Location = new System.Drawing.Point(91, 118);
             this.labelAdress.Name = "labelAdress";
+            this.labelAdress.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.labelAdress.Size = new System.Drawing.Size(72, 20);
             this.labelAdress.TabIndex = 12;
             this.labelAdress.Text = "Direccion";
+            this.labelAdress.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // FormVendor
             // 
