@@ -26,14 +26,14 @@ namespace BusinessObjects.Presenters
 
     public class CustomerPresenter : RepositoryBase<ICustomer, Customer>
     {
-        private readonly CustomerValidator validator;
+        private readonly CustomerValidator _validator;
         public CustomerPresenter(CourseContext<Customer> context, ICustomer customer, BusinessObjectsResourceManager businessObjectsResourceManager) : base(context, customer, businessObjectsResourceManager)
         {
-            validator = new CustomerValidator(businessObjectsResourceManager);
+            _validator = new CustomerValidator(businessObjectsResourceManager);
         }
         protected override void extendedValidations()
         {
-            var  validations = validator.Validate(this._entity);
+            var  validations = _validator.Validate(this._entity);
             if (!validations.IsValid)
             {
                 foreach (var item in validations.Errors)

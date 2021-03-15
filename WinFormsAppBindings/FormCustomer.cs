@@ -32,7 +32,7 @@ namespace WinFormsAppBindings
             InitializeComponent();
 
           
-                      customerContext = CourseContext<Customer>.Factory();
+            customerContext = CourseContext<Customer>.Factory();
 
             customerTypeContext = CourseContext<CustomerType>.Factory();
 

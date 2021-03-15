@@ -23,16 +23,16 @@ namespace BusinessObjects.Presenters
 
     public class VendorPresenter : RepositoryBase<IVendor, Vendor>
     {
-        private readonly VendorValidator validator;
+        private readonly VendorValidator _validator;
         public VendorPresenter(CourseContext<Vendor> context,IVendor vendor, BusinessObjectsResourceManager businessObjectsResourceManager) : base(context, vendor,  businessObjectsResourceManager)
         {
-            validator = new VendorValidator(businessObjectsResourceManager);
+            _validator = new VendorValidator(businessObjectsResourceManager);
         }
 
 
         protected override void extendedValidations()
         {
-            var validations = validator.Validate(this._entity);
+            var validations = _validator.Validate(this._entity);
             if (!validations.IsValid)
             {
                 foreach (var item in validations.Errors)
