@@ -34,8 +34,8 @@ namespace WinFormsAppBindings
 
         private void toolStripMenuItemVendor_Click(object sender, EventArgs e)
         {
-            //BusinessObjectsResourceManager businessObjectsResourceManager = new BusinessObjectsResourceManager("en-US");
-            FormVendor formVendor = new FormVendor("");
+            BusinessObjectsResourceManager businessObjectsResourceManager = new BusinessObjectsResourceManager("en-US");
+            FormVendor formVendor = new FormVendor(businessObjectsResourceManager);
             formVendor.Show();
         }
     }

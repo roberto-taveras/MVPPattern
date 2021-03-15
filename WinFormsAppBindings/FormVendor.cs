@@ -26,19 +26,17 @@ namespace WinFormsAppBindings
         private readonly CourseContext<VendorType> vendorTypeContext;
         private readonly HelperControlsToValidate _validator;
         private readonly HelperControlsTranslate _translate;
-        public FormVendor(string cultureName)
+        public FormVendor(BusinessObjectsResourceManager businessObjectsResourceManager)
         {
             InitializeComponent();
-
-            BusinessObjectsResourceManager resourceManager = new BusinessObjectsResourceManager(cultureName);
 
             vendorContext = CourseContext<Vendor>.Factory();
 
             vendorTypeContext = CourseContext<VendorType>.Factory();
 
-            _vendorPresenter = new VendorPresenter(vendorContext,this);
+            _vendorPresenter = new VendorPresenter(vendorContext,this, businessObjectsResourceManager);
 
-            _vendorTypePresenter = new VendorTypePresenter(vendorTypeContext,_vendorType);
+            _vendorTypePresenter = new VendorTypePresenter(vendorTypeContext,_vendorType, businessObjectsResourceManager);
 
             setDataBinds();
 
@@ -51,7 +49,7 @@ namespace WinFormsAppBindings
             };
 
             _validator = new HelperControlsToValidate(this);
-            _translate = new HelperControlsTranslate(this, resourceManager);
+            _translate = new HelperControlsTranslate(this, businessObjectsResourceManager);
             _translate.Translate();
 
         }

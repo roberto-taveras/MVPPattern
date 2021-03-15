@@ -2,6 +2,7 @@
 using BusinessObjects.Interfaces;
 using BusinessObjects.Models;
 using BusinessObjects.Repository;
+using BusinessObjects.Resources;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
@@ -12,12 +13,9 @@ namespace BusinessObjects.Presenters
 {
     public class VendorValidator : AbstractValidator<Vendor>
     {
-        ResourceManager resourceManager = new ResourceManager(typeof(Resources.Resource));
-
-
-        public VendorValidator()
+        public VendorValidator(BusinessObjectsResourceManager businessObjectsResourceManager)
         {
-            RuleFor(x => x.VendorTypeId).GreaterThan(0).WithMessage(resourceManager.GetString("RequiredErrorMessage") ?? ($"El campo {nameof(Vendor.VendorTypeId)} es requerido"));
+            RuleFor(x => x.VendorTypeId).GreaterThan(0).WithMessage(businessObjectsResourceManager.Translate("RequiredErrorMessage") ?? ($"El campo {nameof(Vendor.VendorTypeId)} es requerido"));
 
         }
 
@@ -25,10 +23,10 @@ namespace BusinessObjects.Presenters
 
     public class VendorPresenter : RepositoryBase<IVendor, Vendor>
     {
-        private readonly VendorValidator validator = new VendorValidator();
-        public VendorPresenter(CourseContext<Vendor> context,IVendor vendor) : base(context, vendor)
+        private readonly VendorValidator validator;
+        public VendorPresenter(CourseContext<Vendor> context,IVendor vendor, BusinessObjectsResourceManager businessObjectsResourceManager) : base(context, vendor,  businessObjectsResourceManager)
         {
-
+            validator = new VendorValidator(businessObjectsResourceManager);
         }
 
 

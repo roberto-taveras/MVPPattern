@@ -1,6 +1,7 @@
 ﻿using BusinessObjects.Context;
 using BusinessObjects.Helpers;
 using BusinessObjects.Interfaces;
+using BusinessObjects.Resources;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -26,7 +27,7 @@ namespace BusinessObjects.Repository
         private bool _isDisposed = false;
 
 
-        public RepositoryBase(CourseContext<TEntity> context,TInterface interfaceInstance)
+        public RepositoryBase(CourseContext<TEntity> context,TInterface interfaceInstance, BusinessObjectsResourceManager businessObjectsResourceManager)
         {
             _context = context;
 

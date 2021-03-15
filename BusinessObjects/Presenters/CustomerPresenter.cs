@@ -2,6 +2,7 @@
 using BusinessObjects.Interfaces;
 using BusinessObjects.Models;
 using BusinessObjects.Repository;
+using BusinessObjects.Resources;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
@@ -13,12 +14,11 @@ namespace BusinessObjects.Presenters
 {
     public class CustomerValidator : AbstractValidator<Customer>
     {
-        ResourceManager resourceManager = new ResourceManager(typeof(Resources.Resource));
        
        
-        public CustomerValidator()
+        public CustomerValidator(BusinessObjectsResourceManager businessObjectsResourceManager)
         {
-            RuleFor(x => x.CustomerTypeId).GreaterThan(0).WithMessage( resourceManager.GetString("RequiredErrorMessage") ?? ($"El campo {nameof(Customer.CustomerTypeId)} es requerido")); 
+            RuleFor(x => x.CustomerTypeId).GreaterThan(0).WithMessage(businessObjectsResourceManager.Translate("RequiredErrorMessage") ?? ($"El campo {nameof(Customer.CustomerTypeId)} es requerido")); 
 
         }
 
@@ -26,10 +26,10 @@ namespace BusinessObjects.Presenters
 
     public class CustomerPresenter : RepositoryBase<ICustomer, Customer>
     {
-        private readonly CustomerValidator validator = new CustomerValidator();
-        public CustomerPresenter(CourseContext<Customer> context, ICustomer customer) : base(context, customer)
+        private readonly CustomerValidator validator;
+        public CustomerPresenter(CourseContext<Customer> context, ICustomer customer, BusinessObjectsResourceManager businessObjectsResourceManager) : base(context, customer, businessObjectsResourceManager)
         {
-
+            validator = new CustomerValidator(businessObjectsResourceManager);
         }
         protected override void extendedValidations()
         {

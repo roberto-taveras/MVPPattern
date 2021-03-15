@@ -36,9 +36,9 @@ namespace WinFormsAppBindings
 
             customerTypeContext = CourseContext<CustomerType>.Factory();
 
-            _customerPresenter = new CustomerPresenter(customerContext, this);
+            _customerPresenter = new CustomerPresenter(customerContext, this, businessObjectsResourceManager);
 
-            _customerTypePresenter = new CustomerTypePresenter(customerTypeContext,_customerType);
+            _customerTypePresenter = new CustomerTypePresenter(customerTypeContext,_customerType, businessObjectsResourceManager);
 
             setDataBinds();
 
