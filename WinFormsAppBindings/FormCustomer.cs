@@ -71,27 +71,27 @@ namespace WinFormsAppBindings
 
             this.textBoxId.DataBindings.Add(new Binding("Text",
                                   _bindingSourceCustomer,
-                                  "Id", true, DataSourceUpdateMode.OnPropertyChanged));
+                                  nameof(Customer.Id), true, DataSourceUpdateMode.OnPropertyChanged));
 
 
             this.textBoxNombre.DataBindings.Add(new Binding("Text",
                                    _bindingSourceCustomer,
-                                   "CustName",
+                                   nameof(Customer.CustName),
                                     true, DataSourceUpdateMode.OnPropertyChanged));
 
             this.textBoxDireccion.DataBindings.Add(new Binding("Text",
                                    _bindingSourceCustomer,
-                                   "Adress",
+                                   nameof(Customer.Adress),
                                     true, DataSourceUpdateMode.OnPropertyChanged));
 
             this.checkBoxStatus.DataBindings.Add(new Binding("Checked",
                                   _bindingSourceCustomer,
-                                  "Status",
+                                  nameof(Customer.Status),
                                    true, DataSourceUpdateMode.OnPropertyChanged));
 
            this.comboBoxCustomerType.DataBindings.Add(new Binding("SelectedValue",
                                 _bindingSourceCustomer,
-                                "CustomerTypeId",
+                                nameof(Customer.CustomerTypeId),
                                  true, DataSourceUpdateMode.OnPropertyChanged));
 
             this.comboBoxCustomerType.DisplayMember = nameof(CustomerType.Description);
