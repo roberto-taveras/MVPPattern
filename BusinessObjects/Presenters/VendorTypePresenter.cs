@@ -7,7 +7,7 @@ using System;
 
 namespace BusinessObjects.Presenters
 {
-    public class VendorTypePresenter : RepositoryBase<IVendorType, VendorType>
+    public class VendorTypePresenter : RepositoryBase<IVendorType,VendorType>
     {
      
         public VendorTypePresenter(CourseContext<VendorType> context,IVendorType vendorType, BusinessObjectsResourceManager  businessObjectsResourceManager) : base(context,vendorType,businessObjectsResourceManager)

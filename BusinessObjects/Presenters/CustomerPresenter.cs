@@ -24,7 +24,7 @@ namespace BusinessObjects.Presenters
 
     }
 
-    public class CustomerPresenter : RepositoryBase<ICustomer, Customer>
+    public class CustomerPresenter : RepositoryBase<ICustomer,Customer>
     {
         private readonly CustomerValidator _validator;
         public CustomerPresenter(CourseContext<Customer> context, ICustomer customer, BusinessObjectsResourceManager businessObjectsResourceManager) : base(context, customer, businessObjectsResourceManager)
