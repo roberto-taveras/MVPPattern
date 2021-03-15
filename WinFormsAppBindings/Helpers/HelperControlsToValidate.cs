@@ -51,6 +51,7 @@ namespace CommonUserControls.Helpers
                     if (button != null)
                     {
                         button.Text = _resourceManager.Translate(button.Name) ?? button.Text;
+                        continue;
                     }
                     else
                     {

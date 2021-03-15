@@ -12,7 +12,9 @@ namespace BusinessObjects.Resources
     public class BusinessObjectsResourceManager
     {
         string _cultureName;
-        public ResourceManager ResourceManager { get; set; }
+        ResourceManager _resourceManager;
+        public string CultureName{ get { return _cultureName; } }
+        public ResourceManager ResourceManager { get { return _resourceManager; } }
         public BusinessObjectsResourceManager(string cultureName = "es-DO")
         {
             this._cultureName = cultureName;
@@ -20,16 +22,11 @@ namespace BusinessObjects.Resources
             Thread.CurrentThread.CurrentCulture = culture;
             Thread.CurrentThread.CurrentCulture = culture;
             Thread.CurrentThread.CurrentUICulture = culture;
-            ResourceManager = new ResourceManager(typeof(Resources.Resource));
+            _resourceManager = new ResourceManager(typeof(Resources.Resource));
             Resource.Culture = culture;
-
-
-
         }
-
         public string Translate(string sender) 
         {
-            
             return (ResourceManager.GetString(sender, Resource.Culture) ?? sender).Trim();
         }
 
