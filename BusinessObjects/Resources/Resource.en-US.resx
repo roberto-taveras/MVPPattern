@@ -130,7 +130,7 @@
     <value>Save</value>
   </data>
   <data name="checkBoxStatus" xml:space="preserve">
-    <value>Estatus</value>
+    <value>Status</value>
   </data>
   <data name="CustName" xml:space="preserve">
     <value>Name</value>

@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace CommonUserControls.Helpers
 {
-    public class HelperControlsTranslate 
+    public class HelperControlsTranslate
     {
         Control _control;
         BusinessObjectsResourceManager _resourceManager;
@@ -17,51 +17,49 @@ namespace CommonUserControls.Helpers
         {
             _control = control;
             _resourceManager = resourceManager;
-          
+
         }
 
-        public void Translate() 
+        public void Translate()
         {
             translate(_control);
         }
 
-        void translate(Control control) 
+        void translate(Control control)
         {
 
             foreach (Control item in control.Controls)
             {
-                if (item != null) 
+                if (item != null)
                 {
                     Label label = item as Label;
                     if (label != null)
                     {
                         label.Text = _resourceManager.Translate(label.Name) ?? label.Text;
+                        continue;
+                    }
+
+                    CheckBox checBox = item as CheckBox;
+                    if (checBox != null)
+                    {
+                        checBox.Text = _resourceManager.Translate(checBox.Name) ?? checBox.Text;
+                        continue;
+
+                    }
+
+                    Button button = item as Button;
+                    if (button != null)
+                    {
+                        button.Text = _resourceManager.Translate(button.Name) ?? button.Text;
                     }
                     else
                     {
-                        CheckBox checBox = item as CheckBox;
-                        if (checBox != null)
-                        {
-                            checBox.Text = _resourceManager.Translate(checBox.Name) ?? checBox.Text;
-                        }
-                        else 
-                        {
-                            Button button = item as Button;
-                            if (button != null)
-                            {
-                                button.Text = _resourceManager.Translate(button.Name) ?? button.Text;
-                            }
-                            else
-                            {
-                                translate(item);
-                            }
-                        }
+                        translate(item);
                     }
+
                 }
 
             }
-
-
         }
     }
     public class HelperControlsToValidate
