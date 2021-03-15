@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BusinessObjects.Resources;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -25,14 +26,16 @@ namespace WinFormsAppBindings
         private void toolStripMenuItemCustome_Click(object sender, EventArgs e)
         {
             //"es-DO" espanol
-            FormCustomer customer = new FormCustomer("en-US");
+            BusinessObjectsResourceManager businessObjectsResourceManager = new BusinessObjectsResourceManager("en-US");
+            FormCustomer customer = new FormCustomer(businessObjectsResourceManager);
             customer.Show();
 
         }
 
         private void toolStripMenuItemVendor_Click(object sender, EventArgs e)
         {
-            FormVendor formVendor = new FormVendor("en-US");
+            //BusinessObjectsResourceManager businessObjectsResourceManager = new BusinessObjectsResourceManager("en-US");
+            FormVendor formVendor = new FormVendor("");
             formVendor.Show();
         }
     }

@@ -27,14 +27,12 @@ namespace WinFormsAppBindings
         private readonly HelperControlsToValidate _validator;
         private readonly HelperControlsTranslate _translate;
 
-        public FormCustomer(string cultureName)
+        public FormCustomer(BusinessObjectsResourceManager businessObjectsResourceManager)
         {
             InitializeComponent();
 
           
-            BusinessObjectsResourceManager resourceManager = new BusinessObjectsResourceManager(cultureName);
-
-            customerContext = CourseContext<Customer>.Factory();
+                      customerContext = CourseContext<Customer>.Factory();
 
             customerTypeContext = CourseContext<CustomerType>.Factory();
 
@@ -53,7 +51,7 @@ namespace WinFormsAppBindings
             };
 
             _validator = new HelperControlsToValidate(this);
-            _translate = new HelperControlsTranslate(this,resourceManager);
+            _translate = new HelperControlsTranslate(this, businessObjectsResourceManager);
             _translate.Translate();
 
         }
