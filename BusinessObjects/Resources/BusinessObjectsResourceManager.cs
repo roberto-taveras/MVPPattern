@@ -25,6 +25,11 @@ namespace BusinessObjects.Resources
             _resourceManager = new ResourceManager(typeof(Resources.Resource));
             Resource.Culture = culture;
         }
+        private BusinessObjectsResourceManager()
+        {
+
+        }
+
         public string Translate(string sender) 
         {
             return (ResourceManager.GetString(sender, Resource.Culture) ?? sender).Trim();

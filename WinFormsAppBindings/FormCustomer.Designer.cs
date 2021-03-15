@@ -52,7 +52,6 @@ namespace WinFormsAppBindings
             this.labelId.Size = new System.Drawing.Size(58, 20);
             this.labelId.TabIndex = 0;
             this.labelId.Text = "Codigo";
-            this.labelId.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // labelName
             // 
@@ -64,7 +63,6 @@ namespace WinFormsAppBindings
             this.labelName.Size = new System.Drawing.Size(64, 20);
             this.labelName.TabIndex = 1;
             this.labelName.Text = "Nombre";
-            this.labelName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // labelCustomerTypeId
             // 
@@ -76,7 +74,6 @@ namespace WinFormsAppBindings
             this.labelCustomerTypeId.Size = new System.Drawing.Size(110, 20);
             this.labelCustomerTypeId.TabIndex = 2;
             this.labelCustomerTypeId.Text = "Tipo de Cliente";
-            this.labelCustomerTypeId.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // textBoxNombre
             // 
@@ -121,7 +118,6 @@ namespace WinFormsAppBindings
             this.textBoxId.Size = new System.Drawing.Size(314, 27);
             this.textBoxId.TabIndex = 1;
             this.textBoxId.Text = "  ";
-            this.textBoxId.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxId.Leave += new System.EventHandler(this.textBoxId_Leave);
             // 
             // checkBoxStatus
@@ -164,7 +160,6 @@ namespace WinFormsAppBindings
             this.labelAdress.Size = new System.Drawing.Size(72, 20);
             this.labelAdress.TabIndex = 11;
             this.labelAdress.Text = "Direccion";
-            this.labelAdress.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // FormCustomer
             // 
