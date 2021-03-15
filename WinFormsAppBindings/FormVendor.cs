@@ -22,21 +22,17 @@ namespace WinFormsAppBindings
         private readonly BindingSource _bindingSourceVendor = new BindingSource();
         private readonly IVendorType _vendorType = new VendorType();
         private readonly VendorTypePresenter _vendorTypePresenter;
-        private readonly CourseContext<Vendor> vendorContext;
-        private readonly CourseContext<VendorType> vendorTypeContext;
         private readonly HelperControlsToValidate _validator;
         private readonly HelperControlsTranslate _translate;
         public FormVendor(BusinessObjectsResourceManager businessObjectsResourceManager)
         {
             InitializeComponent();
 
-            vendorContext = CourseContext<Vendor>.Factory();
+           
 
-            vendorTypeContext = CourseContext<VendorType>.Factory();
+            _vendorPresenter = new VendorPresenter(this, businessObjectsResourceManager);
 
-            _vendorPresenter = new VendorPresenter(vendorContext,this, businessObjectsResourceManager);
-
-            _vendorTypePresenter = new VendorTypePresenter(vendorTypeContext,_vendorType, businessObjectsResourceManager);
+            _vendorTypePresenter = new VendorTypePresenter(_vendorType, businessObjectsResourceManager);
 
             setDataBinds();
 

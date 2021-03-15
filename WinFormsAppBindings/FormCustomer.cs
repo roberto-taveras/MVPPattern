@@ -22,8 +22,6 @@ namespace WinFormsAppBindings
         private readonly CustomerTypePresenter _customerTypePresenter;
         private readonly BindingSource _bindingSourceCustomer = new BindingSource();
         private readonly ICustomerType _customerType = new CustomerType();
-        private readonly CourseContext<Customer> customerContext;
-        private readonly CourseContext<CustomerType> customerTypeContext;
         private readonly HelperControlsToValidate _validator;
         private readonly HelperControlsTranslate _translate;
 
@@ -32,13 +30,11 @@ namespace WinFormsAppBindings
             InitializeComponent();
 
           
-            customerContext = CourseContext<Customer>.Factory();
+       
 
-            customerTypeContext = CourseContext<CustomerType>.Factory();
+            _customerPresenter = new CustomerPresenter(this, businessObjectsResourceManager);
 
-            _customerPresenter = new CustomerPresenter(customerContext, this, businessObjectsResourceManager);
-
-            _customerTypePresenter = new CustomerTypePresenter(customerTypeContext,_customerType, businessObjectsResourceManager);
+            _customerTypePresenter = new CustomerTypePresenter(_customerType, businessObjectsResourceManager);
 
             setDataBinds();
 

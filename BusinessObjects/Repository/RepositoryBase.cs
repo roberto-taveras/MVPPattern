@@ -12,22 +12,22 @@ using System.Linq.Expressions;
 namespace BusinessObjects.Repository
 {
 
-    public class RepositoryBase<TInterface, TEntity> :IDisposable, IRepositoryBase<TInterface, TEntity> where TEntity : class, TInterface, new()
+    public class RepositoryBase<TInterface, TEntity> : IDisposable, IRepositoryBase<TInterface, TEntity> where TEntity : class, TInterface, new()
     {
         public event RefreshData OnRefresh = null;
         public event Validate BeforeSave = null;
         public event Validate AfterSave = null;
-        protected readonly DbSet<TEntity> _dbSet;
+        protected DbSet<TEntity> _dbSet;
         protected readonly HelperValidateEntity _helperValidateEntity;
         protected TEntity _entity = new TEntity();
         protected ICollection<ValidationResult> _validationResult;
-        private readonly CourseContext<TEntity> _context = CourseContext<TEntity>.Factory();
+        protected readonly CourseContext<TEntity> _context = CourseContext<TEntity>.Factory();
         private readonly TInterface _interfaceInstance;
         private readonly HelperAssignProperty<TInterface, TInterface> _helperAssignProperty = new HelperAssignProperty<TInterface, TInterface>();
         private bool _isDisposed = false;
 
 
-        public RepositoryBase(CourseContext<TEntity> context,TInterface interfaceInstance, BusinessObjectsResourceManager businessObjectsResourceManager)
+        public RepositoryBase(CourseContext<TEntity> context, TInterface interfaceInstance, BusinessObjectsResourceManager businessObjectsResourceManager)
         {
             _context = context;
 
@@ -40,6 +40,15 @@ namespace BusinessObjects.Repository
             Add();
         }
 
+        public RepositoryBase(TInterface interfaceInstance, BusinessObjectsResourceManager businessObjectsResourceManager)
+        {
+
+            _interfaceInstance = interfaceInstance;
+
+            _helperValidateEntity = new HelperValidateEntity();
+
+
+        }
         public virtual List<TEntity> GetAll()
         {
             return _dbSet.ToList<TEntity>();
@@ -102,7 +111,7 @@ namespace BusinessObjects.Repository
                .ToList();
 
             changedEntriesCopy.ForEach((a) => { a.State = EntityState.Detached; });
-          
+
         }
 
         public void Add()
@@ -206,7 +215,7 @@ namespace BusinessObjects.Repository
                 return false;
             }
 
-           
+
 
             extendedValidations();
 
@@ -220,10 +229,10 @@ namespace BusinessObjects.Repository
 
         protected virtual void afterSave()
         {
-            
+
         }
 
-        
+
         protected virtual void afterDelete()
         {
 
@@ -231,11 +240,14 @@ namespace BusinessObjects.Repository
 
         public virtual void Dispose()
         {
-            if (!_isDisposed)
+            if (!_isDisposed && _context != null)
             {
                 _isDisposed = true;
                 _context.Dispose();
+
             }
         }
+
     }
+
 }

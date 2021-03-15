@@ -24,9 +24,13 @@ namespace BusinessObjects.Presenters
     public class VendorPresenter : RepositoryBase<IVendor,Vendor>
     {
         private readonly VendorValidator _validator;
-        public VendorPresenter(CourseContext<Vendor> context,IVendor vendor, BusinessObjectsResourceManager businessObjectsResourceManager) : base(context, vendor,  businessObjectsResourceManager)
+        public VendorPresenter(IVendor vendor, BusinessObjectsResourceManager businessObjectsResourceManager) : base(vendor,  businessObjectsResourceManager)
         {
             _validator = new VendorValidator(businessObjectsResourceManager);
+
+            _dbSet = _context.Set<Vendor>();
+
+            Add();
         }
 
 

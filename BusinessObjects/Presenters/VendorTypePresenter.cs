@@ -10,9 +10,11 @@ namespace BusinessObjects.Presenters
     public class VendorTypePresenter : RepositoryBase<IVendorType,VendorType>
     {
      
-        public VendorTypePresenter(CourseContext<VendorType> context,IVendorType vendorType, BusinessObjectsResourceManager  businessObjectsResourceManager) : base(context,vendorType,businessObjectsResourceManager)
+        public VendorTypePresenter(IVendorType vendorType, BusinessObjectsResourceManager  businessObjectsResourceManager) : base(vendorType,businessObjectsResourceManager)
         {
+            _dbSet = _context.Set<VendorType>();
 
+            Add();
         }
     }
 }
