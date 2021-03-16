@@ -39,8 +39,7 @@ namespace BusinessObjects.Repository
 
             _helperValidateEntity = new HelperValidateEntity();
 
-
-
+            _businessObjectsResourceManager = businessObjectsResourceManager;
 
             Add();
         }
