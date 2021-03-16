@@ -11,7 +11,12 @@ namespace BusinessObjects.Helpers
 
             foreach (var p in propertiestToSet)
             {
-                var result = propertiestFromSet.Where(k => k.Name == p.Name).FirstOrDefault();
+                //Veficando si p tiene get and set publicos
+                bool isPublic = p.GetSetMethod() != null;
+                if (!isPublic)
+                    continue;
+
+                var result = propertiestFromSet.Where(k => k.Name == p.Name ).FirstOrDefault();
                 if (result == null)
                     throw new InvalidCastException($"La propiedad {p.Name} de {instanceToSet} no existe en {instanceFrom} ..!!");
 
