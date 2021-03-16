@@ -28,10 +28,7 @@ namespace WinFormsAppBindings
         public FormCustomer(BusinessObjectsResourceManager businessObjectsResourceManager)
         {
             InitializeComponent();
-
-          
        
-
             _customerPresenter = new CustomerPresenter(this, businessObjectsResourceManager);
 
             _customerTypePresenter = new CustomerTypePresenter(_customerType, businessObjectsResourceManager);

@@ -28,8 +28,6 @@ namespace WinFormsAppBindings
         {
             InitializeComponent();
 
-           
-
             _vendorPresenter = new VendorPresenter(this, businessObjectsResourceManager);
 
             _vendorTypePresenter = new VendorTypePresenter(_vendorType, businessObjectsResourceManager);
