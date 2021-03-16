@@ -43,7 +43,21 @@ namespace BusinessObjects.Repository
 
             Add();
         }
-
+        /// <summary>
+        /// Implemente este contructor deberia por ejemplo hacerlo de la siguiente forma:
+        /// </summary>
+        /// <param name="interfaceInstance">Esta es la instacia de la interface implementada en el View</param>
+        /// <param name="businessObjectsResourceManager">esta deberia ser una instacia unica de BusinessObjectsResourceManager</param>
+        /// <example>
+        /// <code>
+        /// public CustomerPresenter(ICustomer customer, BusinessObjectsResourceManager businessObjectsResourceManager) : base( customer, businessObjectsResourceManager)
+        /// {
+        ///      _validator = new CustomerValidator(businessObjectsResourceManager);
+        ///      _dbSet = _context.Set<Customer>();
+        ///      Add();
+        /// }
+        /// </code>
+        /// </example>
         public RepositoryBase(TInterface interfaceInstance, BusinessObjectsResourceManager businessObjectsResourceManager)
         {
 
