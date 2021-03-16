@@ -25,6 +25,8 @@ namespace BusinessObjects.Repository
         private readonly TInterface _interfaceInstance;
         private readonly HelperAssignProperty<TInterface, TInterface> _helperAssignProperty = new HelperAssignProperty<TInterface, TInterface>();
         private bool _isDisposed = false;
+        protected readonly BusinessObjectsResourceManager _businessObjectsResourceManager;
+
 
 
         public RepositoryBase(CourseContext<TEntity> context, TInterface interfaceInstance, BusinessObjectsResourceManager businessObjectsResourceManager)
@@ -37,6 +39,9 @@ namespace BusinessObjects.Repository
 
             _helperValidateEntity = new HelperValidateEntity();
 
+
+
+
             Add();
         }
 
@@ -46,6 +51,8 @@ namespace BusinessObjects.Repository
             _interfaceInstance = interfaceInstance;
 
             _helperValidateEntity = new HelperValidateEntity();
+
+            _businessObjectsResourceManager = businessObjectsResourceManager;
 
 
         }
