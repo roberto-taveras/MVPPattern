@@ -13,9 +13,15 @@ namespace WinFormsAppBindings
 {
     public partial class FormMain : Form
     {
+        BusinessObjectsResourceManager businessObjectsResourceManager;
         public FormMain()
         {
             InitializeComponent();
+            
+            comboBoxIdioma.DataSource = Helpers.Languaje.GetLanguajes();
+            comboBoxIdioma.ValueMember = nameof(Helpers.Languaje.Id);
+            comboBoxIdioma.DisplayMember = nameof(Helpers.Languaje.Description);
+            comboBoxIdioma.SelectedIndex = 0;
         }
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -26,7 +32,7 @@ namespace WinFormsAppBindings
         private void toolStripMenuItemCustome_Click(object sender, EventArgs e)
         {
             //"es-DO" espanol
-            BusinessObjectsResourceManager businessObjectsResourceManager = new BusinessObjectsResourceManager("en-US");
+            businessObjectsResourceManager = new BusinessObjectsResourceManager(this.comboBoxIdioma.SelectedValue.ToString());
             FormCustomer customer = new FormCustomer(businessObjectsResourceManager);
             customer.Show();
 
@@ -34,7 +40,7 @@ namespace WinFormsAppBindings
 
         private void toolStripMenuItemVendor_Click(object sender, EventArgs e)
         {
-            BusinessObjectsResourceManager businessObjectsResourceManager = new BusinessObjectsResourceManager("en-US");
+            businessObjectsResourceManager = new BusinessObjectsResourceManager(this.comboBoxIdioma.SelectedValue.ToString());
             FormVendor formVendor = new FormVendor(businessObjectsResourceManager);
             formVendor.Show();
         }
