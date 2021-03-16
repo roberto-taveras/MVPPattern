@@ -10,4 +10,5 @@
 - Traducciones
 - Validaciones del modelo
 - Fluent Validations
+- Globalizacion (es-DO (Español),en-US (Ingles))
  
