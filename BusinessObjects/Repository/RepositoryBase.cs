@@ -26,6 +26,7 @@ namespace BusinessObjects.Repository
         private readonly HelperAssignProperty<TInterface, TInterface> _helperAssignProperty = new HelperAssignProperty<TInterface, TInterface>();
         private bool _isDisposed = false;
         protected readonly BusinessObjectsResourceManager _businessObjectsResourceManager;
+        private readonly INotifyUI _notifyUI;
 
 
 
@@ -37,9 +38,12 @@ namespace BusinessObjects.Repository
 
             _interfaceInstance = interfaceInstance;
 
+            _notifyUI = _interfaceInstance as INotifyUI;
+
             _helperValidateEntity = new HelperValidateEntity();
 
             _businessObjectsResourceManager = businessObjectsResourceManager;
+
 
             Add();
         }
@@ -61,7 +65,12 @@ namespace BusinessObjects.Repository
         public RepositoryBase(TInterface interfaceInstance, BusinessObjectsResourceManager businessObjectsResourceManager)
         {
 
+ 
             _interfaceInstance = interfaceInstance;
+
+
+            _notifyUI = _interfaceInstance as INotifyUI;
+
 
             _helperValidateEntity = new HelperValidateEntity();
 
@@ -219,8 +228,6 @@ namespace BusinessObjects.Repository
         }
         private bool executeValidations()
         {
-            var _notifyUI = _interfaceInstance as INotifyUI;
-
             if (_notifyUI == null)
                 throw new Exception("El control inyectado a este presenter debe implementar la interface INotifyUI");
 
