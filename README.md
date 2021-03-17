@@ -29,21 +29,21 @@ El proyecto muestra cómo reducir código al crear aplicaciones de Windows Forms
 
 # El BusinessObjects tiene las siguientes partes:
 
-1. [Context]: que se encarga de mapear algunos de los modelos que están vinculados a cada tabla.
+1. `Context`: que se encarga de mapear algunos de los modelos que están vinculados a cada tabla.
 
-2. [HelperAssignProperty]: cuál es la función de getters y setters (entre la interfaz que se inyecta desde la vista y el modelo que se instancia en el presentador).
+2. `HelperAssignProperty`: cuál es la función de getters y setters (entre la interfaz que se inyecta desde la vista y el modelo que se instancia en el presentador).
 
-3. [HelperValidateEntity]: El cual se encarga de las validaciones del modelo en base a las restricciones que se colocan en cada bit que representa cada tabla.
+3. `HelperValidateEntity`: El cual se encarga de las validaciones del modelo en base a las restricciones que se colocan en cada bit que representa cada tabla.
 
-4. [Interfaces] : Contiene las interfaces relacionadas con algunos de los modelos de cada tabla y una interfaz especial llamada INofitify que se inyecta desde la vista al presentador para establecer todo el mecanismo de validación.
+4. `Interfaces` : Contiene las interfaces relacionadas con algunos de los modelos de cada tabla y una interfaz especial llamada INofitify que se inyecta desde la vista al presentador para establecer todo el mecanismo de validación.
 
-5. [Models]: Contiene los pocos de cada clase, estos implementan interfaces que tienen que tener exactamente las mismas propiedades que los modelos para que los getters y setters se ejecuten correctamente en el helper (HelperAssignProperty).
+5. `Models`: Contiene los pocos de cada clase, estos implementan interfaces que tienen que tener exactamente las mismas propiedades que los modelos para que los getters y setters se ejecuten correctamente en el helper (HelperAssignProperty).
 
-6. [Repository]: Contiene un repositorio genérico cuya función es reutilizar el código, y evitar tener que hacer lo mismo una y otra vez, se implementa en cada presentador y cuenta con métodos y eventos virtuales que se pueden utilizar para aumentar su flexibilidad:
+6. `Repository`: Contiene un repositorio genérico cuya función es reutilizar el código, y evitar tener que hacer lo mismo una y otra vez, se implementa en cada presentador y cuenta con métodos y eventos virtuales que se pueden utilizar para aumentar su flexibilidad:
 
-7. [Presenters]: que implementan RepositoryBase y que pueden sobrescribirse y extender sus validaciones con Fluent Validations.
+7. `Presenters`: que implementan RepositoryBase y que pueden sobrescribirse y extender sus validaciones con Fluent Validations.
 
-8. [Resources]: Contiene archivos de recursos y un Helper para la traducción al inglés y al español de la interfaz de usuario y el texto devuelto por las validaciones.
+8. `Resources`: Contiene archivos de recursos y un Helper para la traducción al inglés y al español de la interfaz de usuario y el texto devuelto por las validaciones.
 
 # Finalmente tenemos el proyecto WinFormsAppBindings:
 
