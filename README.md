@@ -33,7 +33,7 @@ El proyecto muestra cómo reducir código al crear aplicaciones de Windows Forms
 
 # El BusinessObjects tiene las siguientes partes:
 
-1. `Context`: que se encarga de mapear algunos de los modelos que están vinculados a cada tabla.
+1. `Context => CourseContext`: que se encarga de mapear algunos de los modelos que están vinculados a cada tabla.
 
 2. `HelperAssignProperty`: El cual es la función de getters y setters (entre la interfaz que se inyecta desde la vista y el modelo que se instancia en el presentador).
 
@@ -43,16 +43,15 @@ El proyecto muestra cómo reducir código al crear aplicaciones de Windows Forms
 
 5. `Models`: Contiene los pocos de cada clase, estos implementan interfaces que tienen que tener exactamente las mismas propiedades que los modelos para que los getters y setters se ejecuten correctamente en el helper (HelperAssignProperty).
 
-6. `Repository`: Contiene un repositorio genérico cuya función es reutilizar el código, y evitar tener que hacer lo mismo una y otra vez, se implementa en cada presentador y cuenta con métodos y eventos virtuales que se pueden utilizar para aumentar su flexibilidad:
+6. `Repository`: Contiene un repositorio genérico `RepositoryBase` cuya función es reutilizar el código, y evitar tener que hacer lo mismo una y otra vez, se implementa en cada presentador y cuenta con métodos y eventos virtuales que se pueden utilizar para aumentar su flexibilidad:
 
 7. `Presenters`: que implementan RepositoryBase y que pueden sobrescribirse y extender sus validaciones con Fluent Validations.
 
-8. `Resources`: Contiene archivos de recursos y un Helper para la traducción al inglés y al español de la interfaz de usuario y el texto devuelto por las validaciones.
+8. `Resources`: Contiene archivos de recursos y un Helper `BusinessObjectsResourceManager` para la traducción al inglés y al español de la interfaz de usuario y el texto devuelto por las validaciones.
 
 # Finalmente tenemos el proyecto WinFormsAppBindings:
 
 Este proyecto es un proyecto de Windows Forms y utiliza Data Bindings, e inyección de dependencias, básicamente se implementa la interfaz de uno o más modelos y se inyecta en el presentador, Contiene todo el código de gestión de la capa de datos.
-
 ```csharp
 using BusinessObjects.Interfaces;
 using System;
