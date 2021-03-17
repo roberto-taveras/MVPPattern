@@ -15,6 +15,9 @@
 ![Funcionamiento del Patron MVP](/WinFormsAppBindings/Assets/MVP.png)
 (https://medium.com/android-news/mvp-depp-dive-c6bb1903ace1)
 
+<p align="center">
+  <img width="460" height="300" src="/WinFormsAppBindings/Assets/MVP.png">
+</p>
 
  El BusinessObjects tiene las siguientes partes:
  
