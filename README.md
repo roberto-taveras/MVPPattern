@@ -36,7 +36,7 @@ El proyecto muestra cómo reducir código al crear aplicaciones de Windows Forms
 
 1. `Context`: que se encarga de mapear algunos de los modelos que están vinculados a cada tabla.
 
-2. `HelperAssignProperty`: cuál es la función de getters y setters (entre la interfaz que se inyecta desde la vista y el modelo que se instancia en el presentador).
+2. `HelperAssignProperty`: El cual es la función de getters y setters (entre la interfaz que se inyecta desde la vista y el modelo que se instancia en el presentador).
 
 3. `HelperValidateEntity`: El cual se encarga de las validaciones del modelo en base a las restricciones que se colocan en cada bit que representa cada tabla.
 
