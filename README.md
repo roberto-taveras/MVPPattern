@@ -23,7 +23,7 @@ Basicamente voy a dejar el link a github para que puedan desacargar el proyecto,
 
 # Introduccion
 
-El proyecto muestra cómo reducir código al crear aplicaciones de Windows Forms al usar repositorios genéricos, ayudantes usando el erroc del validador para no tener que aplicarlo manualmente en cada validación, si no para hacerlo automáticamente como funciona el CRUD en aplicaciones MVC.
+El proyecto muestra cómo reducir código al crear aplicaciones de Windows Forms al usar repositorios genéricos, helpers usando el error provider para no tener que aplicarlo manualmente en cada validación, si no para hacerlo automáticamente como funciona el CRUD en aplicaciones MVC.
 
 # Partes del BusinessObjetcs & Dependencias
 - EntityFramework.6.4.4
