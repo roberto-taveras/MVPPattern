@@ -12,7 +12,8 @@
 - Fluent Validations
 - Globalizacion (es-DO (Español),en-US (Ingles))
 
-![Funcionamiento del Patron MVP](/WinFormsAppBindings/Assets/MVP.png)(https://medium.com/android-news/mvp-depp-dive-c6bb1903ace1)
+![Funcionamiento del Patron MVP]
+(/WinFormsAppBindings/Assets/MVP.png)(https://medium.com/android-news/mvp-depp-dive-c6bb1903ace1)
 
 
  El BusinessObjects tiene las siguientes partes:
