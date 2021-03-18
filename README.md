@@ -13,7 +13,7 @@
 - Globalizacion (es-DO (Español),en-US (Ingles))
 
 <p align="center">
-  <img width="460" height="300" src="/WinFormsAppBindings/Assets/MVP.png">
+  <img width="460" height="460" src="/WinFormsAppBindings/Assets/MVP.png">
 </p>
 (https://medium.com/android-news/mvp-depp-dive-c6bb1903ace1)
 
