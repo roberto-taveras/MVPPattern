@@ -288,6 +288,7 @@ namespace WinFormsAppBindings
 } 
 
 /*CustomerPresenter implementando CustomerValidator*/
+
 using BusinessObjects.Context;
 using BusinessObjects.Interfaces;
 using BusinessObjects.Models;
