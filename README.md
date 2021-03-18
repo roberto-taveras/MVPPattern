@@ -281,11 +281,9 @@ namespace WinFormsAppBindings
         private void search()
         {
             var valueToSearch = textBoxSearch.Text.ToLower();
-            Expression<Func<Customer, bool>> filter = (customer) => customer.CustName.ToLower().Contains(valueToSearch) || customer.Adress.ToLower().Contains(valueToSearch);
-            Func<IQueryable<Customer>, IOrderedQueryable<Customer>> orderFunc = orderByName => orderByName.OrderBy(cust => cust.CustName);
-            var result = _customerPresenter.Get(filter, orderFunc).Select(a => new { a.Id, a.CustName, a.Adress, a.CustomerType.Description, a.Status }).ToList();
-            this.dataGridViewCustomer.DataSource = result;
+            var result = _customerPresenter.Get(valueToSearch).Select ( a=> new { a.Id,a.CustName,a.Adress,a.CustomerType.Description,a.Status });
+            this.dataGridViewCustomer.DataSource = result.ToList();
         }
     }
-}
+} 
 ```
