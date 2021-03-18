@@ -13,13 +13,13 @@
 - Globalizacion (es-DO (Español),en-US (Ingles))
 
 <p align="center">
-  <img width="460" height="300" src="/WinFormsAppBindings/Assets/MVP.png">
+  <img width="460" height="460" src="/WinFormsAppBindings/Assets/MVP.png">
 </p>
 (https://medium.com/android-news/mvp-depp-dive-c6bb1903ace1)
 
 # El BusinessObjects tiene las siguientes partes:
  
-Basicamente voy a dejar el link a github para que puedan desacargar el proyecto, que en escencia tiene un repositorio generico, con el cual se desarrollan los presenters, estos presenters validan las entidades con la informacion del modelo pero tambien se puede extender usando Fluent Validation si se requiere agregar Reglas, como es utilizado en el proyecto.
+En escencia tiene un repositorio generico, con el cual se desarrollan los presenters, estos presenters validan las entidades con la informacion del modelo pero tambien se puede extender usando Fluent Validation si se requiere agregar Reglas, como es utilizado en el proyecto.
 
 # Introduccion
 
