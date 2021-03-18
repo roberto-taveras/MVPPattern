@@ -53,6 +53,10 @@ El proyecto muestra cómo reducir código al crear aplicaciones de Windows Forms
 
 Este proyecto es un proyecto de Windows Forms y utiliza Data Bindings, e inyección de dependencias, básicamente se implementa la interfaz de uno o más modelos y se inyecta en el presentador, Contiene todo el código de gestión de la capa de datos.
 ```csharp
+/*
+Codigo fuente de FormCustomer
+*/
+
 using BusinessObjects.Interfaces;
 using System;
 using System.Windows.Forms;
@@ -256,10 +260,24 @@ namespace WinFormsAppBindings
 
         private void dataGridViewCustomer_DoubleClick(object sender, EventArgs e)
         {
-            var  row = this.dataGridViewCustomer.CurrentRow;
-            if (row != null) 
+            try
             {
-                _customerPresenter.FindById((int) row.Cells[0].Value);
+                findById();
+            }
+            catch (Exception ex)
+            {
+
+                showException(ex);
+            }
+            
+        }
+
+        private void findById()
+        {
+            var row = this.dataGridViewCustomer.CurrentRow;
+            if (row != null)
+            {
+                _customerPresenter.FindById((int)row.Cells[0].Value);
             }
         }
 
@@ -286,7 +304,6 @@ namespace WinFormsAppBindings
         }
     }
 } 
-
 /*CustomerPresenter implementando CustomerValidator*/
 
 using BusinessObjects.Context;
