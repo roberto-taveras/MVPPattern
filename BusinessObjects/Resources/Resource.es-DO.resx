@@ -144,6 +144,9 @@
   <data name="FormCustomer" xml:space="preserve">
     <value>Clientes</value>
   </data>
+  <data name="FormMain" xml:space="preserve">
+    <value>Sistema de Facturacion</value>
+  </data>
   <data name="FormVendor" xml:space="preserve">
     <value>Suplidores</value>
   </data>
@@ -162,6 +165,9 @@
   <data name="labelId" xml:space="preserve">
     <value>Codigo</value>
   </data>
+  <data name="labelLanguaje" xml:space="preserve">
+    <value>Seleccione Idioma</value>
+  </data>
   <data name="labelName" xml:space="preserve">
     <value>Nombre</value>
   </data>
@@ -174,11 +180,20 @@
   <data name="MaxLengthErrorMessage" xml:space="preserve">
     <value>Ha excedido la longitud maxima del campo</value>
   </data>
+  <data name="MenuItem" xml:space="preserve">
+    <value>Ficheros</value>
+  </data>
   <data name="Name" xml:space="preserve">
     <value>Nombre</value>
   </data>
   <data name="RequiredErrorMessage" xml:space="preserve">
     <value>El campo es requerido</value>
+  </data>
+  <data name="toolStripMenuItemCustomer" xml:space="preserve">
+    <value>Clientes</value>
+  </data>
+  <data name="toolStripMenuItemVendor" xml:space="preserve">
+    <value>Suplidores</value>
   </data>
   <data name="VendName" xml:space="preserve">
     <value>Nombre</value>

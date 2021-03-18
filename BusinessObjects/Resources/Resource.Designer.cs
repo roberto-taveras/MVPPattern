@@ -142,6 +142,15 @@ namespace BusinessObjects.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sistema de Facturacion.
+        /// </summary>
+        internal static string FormMain {
+            get {
+                return ResourceManager.GetString("FormMain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Suplidores.
         /// </summary>
         internal static string FormVendor {
@@ -196,6 +205,15 @@ namespace BusinessObjects.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Seleccione Idioma.
+        /// </summary>
+        internal static string labelLanguaje {
+            get {
+                return ResourceManager.GetString("labelLanguaje", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nombre.
         /// </summary>
         internal static string labelName {
@@ -232,11 +250,38 @@ namespace BusinessObjects.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ficheros.
+        /// </summary>
+        internal static string MenuItem {
+            get {
+                return ResourceManager.GetString("MenuItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to El campo es requerido.
         /// </summary>
         internal static string RequiredErrorMessage {
             get {
                 return ResourceManager.GetString("RequiredErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clientes.
+        /// </summary>
+        internal static string toolStripMenuItemCustomer {
+            get {
+                return ResourceManager.GetString("toolStripMenuItemCustomer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Suplidores.
+        /// </summary>
+        internal static string toolStripMenuItemVendor {
+            get {
+                return ResourceManager.GetString("toolStripMenuItemVendor", resourceCulture);
             }
         }
         

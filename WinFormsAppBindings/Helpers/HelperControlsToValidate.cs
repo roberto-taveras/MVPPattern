@@ -18,19 +18,35 @@ namespace CommonUserControls.Helpers
             _control = control;
             _resourceManager = resourceManager;
 
-            Form form = _control as Form;
-            if (_control != null)
-            {
-                form.Text = _resourceManager.Translate(form.Name) ?? form.Text;
-                
-            }
+          
 
         }
 
         public void Translate()
         {
+            Form form = _control as Form;
+            if (form != null)
+            {
+                form.Text = _resourceManager.Translate(form.Name) ?? form.Text;
+
+            }
             translate(_control);
         }
+
+
+
+        void translate(MenuStrip control) 
+        {
+            foreach (ToolStripItem item in control.Items)
+            {
+                if (item != null)
+                {
+                    item.Text = _resourceManager.Translate(item.Name) ?? item.Text;
+                }
+            }
+        }
+
+
 
         void translate(Control control)
         {
@@ -39,7 +55,16 @@ namespace CommonUserControls.Helpers
             {
                 if (item != null)
                 {
-                    
+
+
+
+                    MenuStrip menuStrip = item as MenuStrip;
+                    if (menuStrip != null)
+                    {
+                        menuStrip.Text = _resourceManager.Translate(menuStrip.Name) ?? menuStrip.Text;
+                        translate(menuStrip);
+                        continue;
+                    }
 
                     Label label = item as Label;
                     if (label != null)

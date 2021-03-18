@@ -1,6 +1,8 @@
 ﻿using BusinessObjects.Resources;
+using CommonUserControls.Helpers;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -13,15 +15,30 @@ namespace WinFormsAppBindings
 {
     public partial class FormMain : Form
     {
-        BusinessObjectsResourceManager businessObjectsResourceManager;
+        private  BusinessObjectsResourceManager businessObjectsResourceManager;
+        private  HelperControlsTranslate _translate;
         public FormMain()
         {
             InitializeComponent();
-            
-            comboBoxIdioma.DataSource = Helpers.Languaje.GetLanguajes();
-            comboBoxIdioma.ValueMember = nameof(Helpers.Languaje.Id);
-            comboBoxIdioma.DisplayMember = nameof(Helpers.Languaje.Description);
-            comboBoxIdioma.SelectedIndex = 0;
+
+         
+
+
+            comboBoxLanguaje.DataSource = Helpers.Languaje.GetLanguajes();
+            comboBoxLanguaje.ValueMember = nameof(Helpers.Languaje.Id);
+            comboBoxLanguaje.DisplayMember = nameof(Helpers.Languaje.Description);
+            comboBoxLanguaje.SelectedIndex = 0;
+
+            comboBoxLanguaje.SelectedValueChanged += (sender, e) => {
+                businessObjectsResourceManager = new BusinessObjectsResourceManager(comboBoxLanguaje.SelectedValue.ToString());
+                translate(); ;
+
+
+            };
+
+
+
+
         }
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -32,15 +49,22 @@ namespace WinFormsAppBindings
         private void toolStripMenuItemCustome_Click(object sender, EventArgs e)
         {
             //"es-DO" espanol
-            businessObjectsResourceManager = new BusinessObjectsResourceManager(this.comboBoxIdioma.SelectedValue.ToString());
+
+      
             FormCustomer customer = new FormCustomer(businessObjectsResourceManager);
             customer.Show();
 
         }
 
+        private void translate()
+        {
+            _translate = new HelperControlsTranslate(this, businessObjectsResourceManager);
+            _translate.Translate();
+        }
+
         private void toolStripMenuItemVendor_Click(object sender, EventArgs e)
         {
-            businessObjectsResourceManager = new BusinessObjectsResourceManager(this.comboBoxIdioma.SelectedValue.ToString());
+   
             FormVendor formVendor = new FormVendor(businessObjectsResourceManager);
             formVendor.Show();
         }
