@@ -30,8 +30,9 @@ namespace WinFormsAppBindings
             comboBoxLanguaje.SelectedIndex = 0;
 
             comboBoxLanguaje.SelectedValueChanged += (sender, e) => {
-                businessObjectsResourceManager = new BusinessObjectsResourceManager(comboBoxLanguaje.SelectedValue.ToString());
-                translate(); ;
+               
+                if(comboBoxLanguaje.SelectedValue != null)
+                    translate(); 
 
 
             };
@@ -43,14 +44,14 @@ namespace WinFormsAppBindings
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-
+            
         }
 
         private void toolStripMenuItemCustome_Click(object sender, EventArgs e)
         {
             //"es-DO" espanol
 
-      
+            businessObjectsResourceManager = new BusinessObjectsResourceManager(comboBoxLanguaje.SelectedValue.ToString());
             FormCustomer customer = new FormCustomer(businessObjectsResourceManager);
             customer.Show();
 
@@ -58,13 +59,15 @@ namespace WinFormsAppBindings
 
         private void translate()
         {
+            businessObjectsResourceManager = new BusinessObjectsResourceManager(comboBoxLanguaje.SelectedValue.ToString());
             _translate = new HelperControlsTranslate(this, businessObjectsResourceManager);
             _translate.Translate();
         }
 
         private void toolStripMenuItemVendor_Click(object sender, EventArgs e)
         {
-   
+
+            businessObjectsResourceManager = new BusinessObjectsResourceManager(comboBoxLanguaje.SelectedValue.ToString());
             FormVendor formVendor = new FormVendor(businessObjectsResourceManager);
             formVendor.Show();
         }
