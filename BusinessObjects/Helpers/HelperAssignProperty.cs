@@ -22,6 +22,7 @@ namespace BusinessObjects.Helpers
 
                 if(p.GetType() !=  result.GetType())
                     throw new InvalidCastException($"La propiedad {p.Name} {instanceToSet} tiene un tipo de dato { p.GetType()} y {instanceFrom} tiene un tipo de dato {result.GetType()}  {instanceFrom} ..!!");
+
                 try
                 {
                     p.SetValue(toSet, result.GetValue(fromSet,null), null);

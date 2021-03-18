@@ -95,7 +95,7 @@ namespace BusinessObjects.Repository
 
             }
 
-            query.Take(50);
+            query.Take(top);
 
 
             if (includeProperties != null)
