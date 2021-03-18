@@ -462,6 +462,7 @@ namespace BusinessObjects.Repository
         }
 
         public abstract IEnumerable<TEntity>  Get(string sender);
+        
         public virtual IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, string includeProperties = "")
         {
             IQueryable<TEntity> query = _dbSet;
