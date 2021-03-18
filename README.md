@@ -184,13 +184,13 @@ namespace WinFormsAppBindings
             MessageBox.Show($"Se produjo una excepcion {ex.Message}", "Aviso..!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private void buttonNuevo_Click(object sender, EventArgs e)
+        private void buttonNew_Click(object sender, EventArgs e)
         {
             _customerPresenter.Add();
 
         }
 
-        private void buttonSalvar_Click(object sender, EventArgs e)
+        private void buttonSave_Click(object sender, EventArgs e)
         {
             try
             {
@@ -232,7 +232,7 @@ namespace WinFormsAppBindings
 
         }
 
-        private void buttonBorrar_Click(object sender, EventArgs e)
+        private void buttonDelete_Click(object sender, EventArgs e)
         {
             try
             {
