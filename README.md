@@ -127,12 +127,12 @@ namespace WinFormsAppBindings
                                   nameof(Customer.Id), true, DataSourceUpdateMode.OnPropertyChanged));
 
 
-            this.textBoxNombre.DataBindings.Add(new Binding("Text",
+            this.textBoxCustName.DataBindings.Add(new Binding("Text",
                                    _bindingSourceCustomer,
                                    nameof(Customer.CustName),
                                     true, DataSourceUpdateMode.OnPropertyChanged));
 
-            this.textBoxDireccion.DataBindings.Add(new Binding("Text",
+            this.textBoxAdress.DataBindings.Add(new Binding("Text",
                                    _bindingSourceCustomer,
                                    nameof(Customer.Adress),
                                     true, DataSourceUpdateMode.OnPropertyChanged));
@@ -161,8 +161,8 @@ namespace WinFormsAppBindings
 
         private void setTags()
         {
-            this.textBoxNombre.Tag = nameof(Customer.CustName);
-            this.textBoxDireccion.Tag = nameof(Customer.Adress);
+            this.textBoxCustName.Tag = nameof(Customer.CustName);
+            this.textBoxAdress.Tag = nameof(Customer.Adress);
             this.comboBoxCustomerType.Tag = nameof(Customer.CustomerTypeId);
         }
 
