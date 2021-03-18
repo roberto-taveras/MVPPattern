@@ -314,7 +314,7 @@ using BusinessObjects.Resources;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.Dat aAnnotations;
+using System.ComponentModel.DataAnnotations;
 using System.Globalization;
 using System.Linq;
 using System.Linq.Expressions;
@@ -364,16 +364,15 @@ namespace BusinessObjects.Presenters
            
         }
 
-        public IEnumerable<Customer> Get(string valueToSearch) 
+        public  override IEnumerable<Customer> Get(string sender) 
         {
-            Expression<Func<Customer, bool>> filter = (customer) => customer.CustName.ToLower().Contains(valueToSearch) || customer.Adress.ToLower().Contains(valueToSearch);
+            Expression<Func<Customer, bool>> filter = (customer) => customer.CustName.ToLower().Contains(sender) || customer.Adress.ToLower().Contains(sender);
             Func<IQueryable<Customer>, IOrderedQueryable<Customer>> orderFunc = orderByName => orderByName.OrderBy(cust => cust.CustName);
             return this.Get(filter, orderFunc).Select(a => new  Customer {Id=  a.Id, CustName= a.CustName,Adress=  a.Adress, CustomerType = a.CustomerType,Status=  a.Status }).ToList();
         }
 
     }    
 }
-
 
 /*Aqui debajo codigo del RepositoryBase*/
 
@@ -391,7 +390,7 @@ using System.Linq.Expressions;
 namespace BusinessObjects.Repository
 {
 
-    public class RepositoryBase<TInterface, TEntity> : IDisposable, IRepositoryBase<TInterface, TEntity> where TEntity : class, TInterface, new()
+    public abstract class RepositoryBase<TInterface, TEntity> : IDisposable, IRepositoryBase<TInterface, TEntity> where TEntity : class, TInterface, new()
     {
         public event RefreshData OnRefresh = null;
         public event Validate BeforeSave = null;
@@ -462,6 +461,7 @@ namespace BusinessObjects.Repository
             return _dbSet.ToList<TEntity>();
         }
 
+        public abstract IEnumerable<TEntity>  Get(string sender);
         public virtual IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, string includeProperties = "")
         {
             IQueryable<TEntity> query = _dbSet;
