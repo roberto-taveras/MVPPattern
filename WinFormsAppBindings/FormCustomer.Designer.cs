@@ -32,8 +32,8 @@ namespace WinFormsAppBindings
             this.labelId = new System.Windows.Forms.Label();
             this.labelName = new System.Windows.Forms.Label();
             this.labelCustomerTypeId = new System.Windows.Forms.Label();
-            this.textBoxNombre = new System.Windows.Forms.TextBox();
-            this.textBoxDireccion = new System.Windows.Forms.TextBox();
+            this.textBoxCustName = new System.Windows.Forms.TextBox();
+            this.textBoxAdress = new System.Windows.Forms.TextBox();
             this.buttonNew = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
             this.textBoxId = new System.Windows.Forms.TextBox();
@@ -42,9 +42,9 @@ namespace WinFormsAppBindings
             this.comboBoxCustomerType = new System.Windows.Forms.ComboBox();
             this.labelAdress = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.dataGridViewCustomer = new System.Windows.Forms.DataGridView();
-            this.labelSearch = new System.Windows.Forms.Label();
             this.textBoxSearch = new System.Windows.Forms.TextBox();
+            this.labelSearch = new System.Windows.Forms.Label();
+            this.dataGridViewCustomer = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomer)).BeginInit();
             this.SuspendLayout();
@@ -52,7 +52,7 @@ namespace WinFormsAppBindings
             // labelId
             // 
             this.labelId.AutoSize = true;
-            this.labelId.Location = new System.Drawing.Point(110, 51);
+            this.labelId.Location = new System.Drawing.Point(114, 51);
             this.labelId.Name = "labelId";
             this.labelId.Size = new System.Drawing.Size(58, 20);
             this.labelId.TabIndex = 0;
@@ -61,7 +61,7 @@ namespace WinFormsAppBindings
             // labelName
             // 
             this.labelName.AutoSize = true;
-            this.labelName.Location = new System.Drawing.Point(104, 90);
+            this.labelName.Location = new System.Drawing.Point(108, 88);
             this.labelName.Name = "labelName";
             this.labelName.Size = new System.Drawing.Size(64, 20);
             this.labelName.TabIndex = 1;
@@ -70,27 +70,27 @@ namespace WinFormsAppBindings
             // labelCustomerTypeId
             // 
             this.labelCustomerTypeId.AutoSize = true;
-            this.labelCustomerTypeId.Location = new System.Drawing.Point(58, 204);
+            this.labelCustomerTypeId.Location = new System.Drawing.Point(61, 204);
             this.labelCustomerTypeId.Name = "labelCustomerTypeId";
             this.labelCustomerTypeId.Size = new System.Drawing.Size(110, 20);
             this.labelCustomerTypeId.TabIndex = 2;
             this.labelCustomerTypeId.Text = "Tipo de Cliente";
             // 
-            // textBoxNombre
+            // textBoxCustName
             // 
-            this.textBoxNombre.Location = new System.Drawing.Point(177, 86);
-            this.textBoxNombre.Name = "textBoxNombre";
-            this.textBoxNombre.Size = new System.Drawing.Size(314, 27);
-            this.textBoxNombre.TabIndex = 2;
-            this.textBoxNombre.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxCustName.Location = new System.Drawing.Point(177, 86);
+            this.textBoxCustName.Name = "textBoxCustName";
+            this.textBoxCustName.Size = new System.Drawing.Size(314, 27);
+            this.textBoxCustName.TabIndex = 2;
+            this.textBoxCustName.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // textBoxDireccion
+            // textBoxAdress
             // 
-            this.textBoxDireccion.Location = new System.Drawing.Point(177, 124);
-            this.textBoxDireccion.Name = "textBoxDireccion";
-            this.textBoxDireccion.Size = new System.Drawing.Size(314, 27);
-            this.textBoxDireccion.TabIndex = 3;
-            this.textBoxDireccion.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxAdress.Location = new System.Drawing.Point(177, 124);
+            this.textBoxAdress.Name = "textBoxAdress";
+            this.textBoxAdress.Size = new System.Drawing.Size(314, 27);
+            this.textBoxAdress.TabIndex = 3;
+            this.textBoxAdress.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // buttonNew
             // 
@@ -98,7 +98,7 @@ namespace WinFormsAppBindings
             this.buttonNew.Name = "buttonNew";
             this.buttonNew.Size = new System.Drawing.Size(94, 29);
             this.buttonNew.TabIndex = 4;
-            this.buttonNew.Text = "New";
+            this.buttonNew.Text = "Nuevo";
             this.buttonNew.UseVisualStyleBackColor = true;
             this.buttonNew.Click += new System.EventHandler(this.buttonNew_Click);
             // 
@@ -108,7 +108,7 @@ namespace WinFormsAppBindings
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(94, 29);
             this.buttonSave.TabIndex = 5;
-            this.buttonSave.Text = "Save";
+            this.buttonSave.Text = "Salvar";
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
@@ -154,7 +154,7 @@ namespace WinFormsAppBindings
             // 
             this.labelAdress.AutoSize = true;
             this.labelAdress.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.labelAdress.Location = new System.Drawing.Point(96, 130);
+            this.labelAdress.Location = new System.Drawing.Point(100, 127);
             this.labelAdress.Name = "labelAdress";
             this.labelAdress.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.labelAdress.Size = new System.Drawing.Size(72, 20);
@@ -170,6 +170,23 @@ namespace WinFormsAppBindings
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1032, 353);
             this.panel1.TabIndex = 12;
+            // 
+            // textBoxSearch
+            // 
+            this.textBoxSearch.Location = new System.Drawing.Point(207, 301);
+            this.textBoxSearch.Name = "textBoxSearch";
+            this.textBoxSearch.Size = new System.Drawing.Size(300, 27);
+            this.textBoxSearch.TabIndex = 1;
+            this.textBoxSearch.TextChanged += new System.EventHandler(this.textBoxSearch_TextChanged);
+            // 
+            // labelSearch
+            // 
+            this.labelSearch.AutoSize = true;
+            this.labelSearch.Location = new System.Drawing.Point(149, 304);
+            this.labelSearch.Name = "labelSearch";
+            this.labelSearch.Size = new System.Drawing.Size(52, 20);
+            this.labelSearch.TabIndex = 0;
+            this.labelSearch.Text = "Buscar";
             // 
             // dataGridViewCustomer
             // 
@@ -189,23 +206,6 @@ namespace WinFormsAppBindings
             this.dataGridViewCustomer.TabIndex = 13;
             this.dataGridViewCustomer.DoubleClick += new System.EventHandler(this.dataGridViewCustomer_DoubleClick);
             // 
-            // labelSearch
-            // 
-            this.labelSearch.AutoSize = true;
-            this.labelSearch.Location = new System.Drawing.Point(149, 304);
-            this.labelSearch.Name = "labelSearch";
-            this.labelSearch.Size = new System.Drawing.Size(52, 20);
-            this.labelSearch.TabIndex = 0;
-            this.labelSearch.Text = "Buscar";
-            // 
-            // textBoxSearch
-            // 
-            this.textBoxSearch.Location = new System.Drawing.Point(207, 301);
-            this.textBoxSearch.Name = "textBoxSearch";
-            this.textBoxSearch.Size = new System.Drawing.Size(300, 27);
-            this.textBoxSearch.TabIndex = 1;
-            this.textBoxSearch.TextChanged += new System.EventHandler(this.textBoxSearch_TextChanged);
-            // 
             // FormCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -219,8 +219,8 @@ namespace WinFormsAppBindings
             this.Controls.Add(this.textBoxId);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.buttonNew);
-            this.Controls.Add(this.textBoxDireccion);
-            this.Controls.Add(this.textBoxNombre);
+            this.Controls.Add(this.textBoxAdress);
+            this.Controls.Add(this.textBoxCustName);
             this.Controls.Add(this.labelCustomerTypeId);
             this.Controls.Add(this.labelName);
             this.Controls.Add(this.labelId);
@@ -241,8 +241,8 @@ namespace WinFormsAppBindings
         private System.Windows.Forms.Label labelId;
         private System.Windows.Forms.Label labelName;
         private System.Windows.Forms.Label labelCustomerTypeId;
-        private System.Windows.Forms.TextBox textBoxNombre;
-        private System.Windows.Forms.TextBox textBoxDireccion;
+        private System.Windows.Forms.TextBox textBoxCustName;
+        private System.Windows.Forms.TextBox textBoxAdress;
         private System.Windows.Forms.Button buttonNew;
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.TextBox textBoxId;

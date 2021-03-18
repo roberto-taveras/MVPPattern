@@ -141,6 +141,12 @@
   <data name="Description" xml:space="preserve">
     <value>Description</value>
   </data>
+  <data name="FormCustomer" xml:space="preserve">
+    <value>Customer</value>
+  </data>
+  <data name="FormVendor" xml:space="preserve">
+    <value>Vendor</value>
+  </data>
   <data name="Id" xml:space="preserve">
     <value>Id</value>
   </data>

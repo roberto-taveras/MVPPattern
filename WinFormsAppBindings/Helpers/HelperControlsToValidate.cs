@@ -18,6 +18,13 @@ namespace CommonUserControls.Helpers
             _control = control;
             _resourceManager = resourceManager;
 
+            Form form = _control as Form;
+            if (_control != null)
+            {
+                form.Text = _resourceManager.Translate(form.Name) ?? form.Text;
+                
+            }
+
         }
 
         public void Translate()
@@ -32,6 +39,8 @@ namespace CommonUserControls.Helpers
             {
                 if (item != null)
                 {
+                    
+
                     Label label = item as Label;
                     if (label != null)
                     {

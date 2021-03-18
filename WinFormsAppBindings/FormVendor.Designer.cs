@@ -32,8 +32,8 @@ namespace WinFormsAppBindings
             this.labelId = new System.Windows.Forms.Label();
             this.labelName = new System.Windows.Forms.Label();
             this.labelVendorTypeId = new System.Windows.Forms.Label();
-            this.textBoxNombre = new System.Windows.Forms.TextBox();
-            this.textBoxDireccion = new System.Windows.Forms.TextBox();
+            this.textBoxVendorName = new System.Windows.Forms.TextBox();
+            this.textBoxAdress = new System.Windows.Forms.TextBox();
             this.buttonNew = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
             this.textBoxId = new System.Windows.Forms.TextBox();
@@ -86,19 +86,19 @@ namespace WinFormsAppBindings
             this.labelVendorTypeId.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.labelVendorTypeId.Click += new System.EventHandler(this.label3_Click);
             // 
-            // textBoxNombre
+            // textBoxVendorName
             // 
-            this.textBoxNombre.Location = new System.Drawing.Point(167, 77);
-            this.textBoxNombre.Name = "textBoxNombre";
-            this.textBoxNombre.Size = new System.Drawing.Size(314, 27);
-            this.textBoxNombre.TabIndex = 2;
+            this.textBoxVendorName.Location = new System.Drawing.Point(167, 77);
+            this.textBoxVendorName.Name = "textBoxVendorName";
+            this.textBoxVendorName.Size = new System.Drawing.Size(314, 27);
+            this.textBoxVendorName.TabIndex = 2;
             // 
-            // textBoxDireccion
+            // textBoxAdress
             // 
-            this.textBoxDireccion.Location = new System.Drawing.Point(167, 114);
-            this.textBoxDireccion.Name = "textBoxDireccion";
-            this.textBoxDireccion.Size = new System.Drawing.Size(314, 27);
-            this.textBoxDireccion.TabIndex = 3;
+            this.textBoxAdress.Location = new System.Drawing.Point(167, 114);
+            this.textBoxAdress.Name = "textBoxAdress";
+            this.textBoxAdress.Size = new System.Drawing.Size(314, 27);
+            this.textBoxAdress.TabIndex = 3;
             // 
             // buttonNew
             // 
@@ -106,7 +106,7 @@ namespace WinFormsAppBindings
             this.buttonNew.Name = "buttonNew";
             this.buttonNew.Size = new System.Drawing.Size(94, 29);
             this.buttonNew.TabIndex = 4;
-            this.buttonNew.Text = "New";
+            this.buttonNew.Text = "Nuevo";
             this.buttonNew.UseVisualStyleBackColor = true;
             this.buttonNew.Click += new System.EventHandler(this.buttonNew_Click);
             // 
@@ -116,7 +116,7 @@ namespace WinFormsAppBindings
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(94, 29);
             this.buttonSave.TabIndex = 5;
-            this.buttonSave.Text = "Save";
+            this.buttonSave.Text = "Salvar";
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
@@ -228,14 +228,14 @@ namespace WinFormsAppBindings
             this.Controls.Add(this.textBoxId);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.buttonNew);
-            this.Controls.Add(this.textBoxDireccion);
-            this.Controls.Add(this.textBoxNombre);
+            this.Controls.Add(this.textBoxAdress);
+            this.Controls.Add(this.textBoxVendorName);
             this.Controls.Add(this.labelVendorTypeId);
             this.Controls.Add(this.labelName);
             this.Controls.Add(this.labelId);
             this.Controls.Add(this.panel1);
             this.Name = "FormVendor";
-            this.Text = "Vendors";
+            this.Text = "Suplidores";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -250,8 +250,8 @@ namespace WinFormsAppBindings
         private System.Windows.Forms.Label labelId;
         private System.Windows.Forms.Label labelName;
         private System.Windows.Forms.Label labelVendorTypeId;
-        private System.Windows.Forms.TextBox textBoxNombre;
-        private System.Windows.Forms.TextBox textBoxDireccion;
+        private System.Windows.Forms.TextBox textBoxVendorName;
+        private System.Windows.Forms.TextBox textBoxAdress;
         private System.Windows.Forms.Button buttonNew;
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.TextBox textBoxId;

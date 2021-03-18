@@ -133,6 +133,24 @@ namespace BusinessObjects.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Clientes.
+        /// </summary>
+        internal static string FormCustomer {
+            get {
+                return ResourceManager.GetString("FormCustomer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Suplidores.
+        /// </summary>
+        internal static string FormVendor {
+            get {
+                return ResourceManager.GetString("FormVendor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Id.
         /// </summary>
         internal static string Id {
