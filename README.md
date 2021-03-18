@@ -303,6 +303,7 @@ namespace WinFormsAppBindings
         }
     }
 } 
+
 /*CustomerPresenter implementando CustomerValidator*/
 
 using BusinessObjects.Context;
