@@ -8,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Globalization;
+using System.Linq;
+using System.Linq.Expressions;
 using System.Resources;
 
 namespace BusinessObjects.Presenters
@@ -52,6 +54,13 @@ namespace BusinessObjects.Presenters
                 }
             }
            
+        }
+
+        public  override IEnumerable<Customer> Get(string sender) 
+        {
+            Expression<Func<Customer, bool>> filter = (customer) => customer.CustName.ToLower().Contains(sender) || customer.Adress.ToLower().Contains(sender);
+            Func<IQueryable<Customer>, IOrderedQueryable<Customer>> orderFunc = orderByName => orderByName.OrderBy(cust => cust.CustName);
+            return this.Get(filter, orderFunc).Select(a => new  Customer {Id=  a.Id, CustName= a.CustName,Adress=  a.Adress, CustomerType = a.CustomerType,Status=  a.Status }).ToList();
         }
 
     }    

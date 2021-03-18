@@ -12,6 +12,7 @@ using System.Globalization;
 using System.Threading;
 using System.Resources;
 using BusinessObjects.Resources;
+using System.Linq;
 
 namespace WinFormsAppBindings
 {
@@ -199,6 +200,51 @@ namespace WinFormsAppBindings
         private void label3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void textBoxSearch_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                search();
+            }
+            catch (Exception ex)
+            {
+
+                showException(ex);
+            }
+
+
+        }
+
+        private void search()
+        {
+            var valueToSearch = textBoxSearch.Text.ToLower();
+            var result = _vendorPresenter.Get(valueToSearch).Select(a => new { a.Id, a.VendName, a.Adress, a.VendorType.Description, a.Status });
+            this.dataGridViewCustomer.DataSource = result.ToList();
+        }
+
+        private void dataGridViewCustomer_DoubleClick(object sender, EventArgs e)
+        {
+            try
+            {
+                findById();
+            }
+            catch (Exception ex)
+            {
+
+                showException(ex);
+            }
+           
+        }
+
+        private void findById()
+        {
+            var row = this.dataGridViewCustomer.CurrentRow;
+            if (row != null)
+            {
+                _vendorPresenter.FindById((int)row.Cells[0].Value);
+            }
         }
     }
 }

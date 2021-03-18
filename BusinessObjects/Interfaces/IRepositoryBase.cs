@@ -15,6 +15,7 @@ namespace BusinessObjects.Interfaces
         void Add();
         void Delete(int id);
         void FindById(int id);
+        IEnumerable<TEntity> Get(string sender);
         IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, string includeProperties = "");
         List<TEntity> GetAll();
         void Save();

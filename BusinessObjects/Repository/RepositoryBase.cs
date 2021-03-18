@@ -12,7 +12,7 @@ using System.Linq.Expressions;
 namespace BusinessObjects.Repository
 {
 
-    public class RepositoryBase<TInterface, TEntity> : IDisposable, IRepositoryBase<TInterface, TEntity> where TEntity : class, TInterface, new()
+    public abstract class RepositoryBase<TInterface, TEntity> : IDisposable, IRepositoryBase<TInterface, TEntity> where TEntity : class, TInterface, new()
     {
         public event RefreshData OnRefresh = null;
         public event Validate BeforeSave = null;
@@ -83,6 +83,7 @@ namespace BusinessObjects.Repository
             return _dbSet.ToList<TEntity>();
         }
 
+        public abstract IEnumerable<TEntity>  Get(string sender);
         public virtual IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, string includeProperties = "")
         {
             IQueryable<TEntity> query = _dbSet;

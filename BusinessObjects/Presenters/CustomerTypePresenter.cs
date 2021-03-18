@@ -4,6 +4,7 @@ using BusinessObjects.Models;
 using BusinessObjects.Repository;
 using BusinessObjects.Resources;
 using System;
+using System.Collections.Generic;
 
 namespace BusinessObjects.Presenters
 {
@@ -15,6 +16,11 @@ namespace BusinessObjects.Presenters
 
             Add();
 
+        }
+
+        public override IEnumerable<CustomerType> Get(string sender)
+        {
+            throw new NotImplementedException();
         }
     }
 }
