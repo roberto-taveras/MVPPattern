@@ -19,7 +19,7 @@
 
 # El BusinessObjects tiene las siguientes partes:
  
-Basicamente voy a dejar el link a github para que puedan desacargar el proyecto, que en escencia tiene un repositorio generico, con el cual se desarrollan los presenters, estos presenters validan las entidades con la informacion del modelo pero tambien se puede extender usando Fluent Validation si se requiere agregar Reglas, como es utilizado en el proyecto.
+En escencia tiene un repositorio generico, con el cual se desarrollan los presenters, estos presenters validan las entidades con la informacion del modelo pero tambien se puede extender usando Fluent Validation si se requiere agregar Reglas, como es utilizado en el proyecto.
 
 # Introduccion
 
