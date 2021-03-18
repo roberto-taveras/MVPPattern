@@ -462,8 +462,8 @@ namespace BusinessObjects.Repository
         }
 
         public abstract IEnumerable<TEntity>  Get(string sender);
-        
-        public virtual IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, string includeProperties = "")
+
+        public virtual IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, string includeProperties = "", int top = 50)
         {
             IQueryable<TEntity> query = _dbSet;
 
@@ -473,7 +473,7 @@ namespace BusinessObjects.Repository
 
             }
 
-            query.Take(50);
+            query.Take(top);
 
 
             if (includeProperties != null)
