@@ -53,9 +53,8 @@ El proyecto muestra cómo reducir código al crear aplicaciones de Windows Forms
 
 Este proyecto es un proyecto de Windows Forms y utiliza Data Bindings, e inyección de dependencias, básicamente se implementa la interfaz de uno o más modelos y se inyecta en el presentador, Contiene todo el código de gestión de la capa de datos.
 ```csharp
-/*
-Codigo fuente de FormCustomer
-*/
+
+/* Codigo fuente de FormCustomer */
 
 using BusinessObjects.Interfaces;
 using System;
