@@ -53,6 +53,9 @@ El proyecto muestra cómo reducir código al crear aplicaciones de Windows Forms
 
 Este proyecto es un proyecto de Windows Forms y utiliza Data Bindings, e inyección de dependencias, básicamente se implementa la interfaz de uno o más modelos y se inyecta en el presentador, Contiene todo el código de gestión de la capa de datos.
 ```csharp
+
+/* Codigo fuente de FormCustomer */
+
 using BusinessObjects.Interfaces;
 using System;
 using System.Windows.Forms;
@@ -66,6 +69,8 @@ using System.Globalization;
 using System.Threading;
 using System.Resources;
 using BusinessObjects.Resources;
+using System.Linq.Expressions;
+using System.Linq;
 
 namespace WinFormsAppBindings
 {
@@ -241,16 +246,419 @@ namespace WinFormsAppBindings
            
         }
 
-        public void NotifyErrors(ICollection<validationresult> sender)
+        public void NotifyErrors(ICollection<ValidationResult> sender)
         {
            
             _validator.ValidateMembers(sender);
         }
 
-        public void  ClearErrorsValidations(ICollection<validationresult> sender)
+        public void  ClearErrorsValidations(ICollection<ValidationResult> sender)
         {
             _validator.ClearErrors(sender);
         }
+
+        private void dataGridViewCustomer_DoubleClick(object sender, EventArgs e)
+        {
+            try
+            {
+                findById();
+            }
+            catch (Exception ex)
+            {
+
+                showException(ex);
+            }
+            
+        }
+
+        private void findById()
+        {
+            var row = this.dataGridViewCustomer.CurrentRow;
+            if (row != null)
+            {
+                _customerPresenter.FindById((int)row.Cells[0].Value);
+            }
+        }
+
+        private void textBoxSearch_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                search();
+            }
+            catch (Exception ex)
+            {
+
+                showException(ex);
+            }
+           
+
+        }
+
+        private void search()
+        {
+            var valueToSearch = textBoxSearch.Text.ToLower();
+            var result = _customerPresenter.Get(valueToSearch).Select ( a=> new { a.Id,a.CustName,a.Adress,a.CustomerType.Description,a.Status });
+            this.dataGridViewCustomer.DataSource = result.ToList();
+        }
     }
+} 
+
+/*CustomerPresenter implementando CustomerValidator*/
+
+using BusinessObjects.Context;
+using BusinessObjects.Interfaces;
+using BusinessObjects.Models;
+using BusinessObjects.Repository;
+using BusinessObjects.Resources;
+using FluentValidation;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Globalization;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Resources;
+
+namespace BusinessObjects.Presenters
+{
+    public class CustomerValidator : AbstractValidator<Customer>
+    {
+       
+       
+        public CustomerValidator(BusinessObjectsResourceManager businessObjectsResourceManager)
+        {
+            RuleFor(x => x.CustomerTypeId).GreaterThan(0).WithMessage(businessObjectsResourceManager.Translate("RequiredErrorMessage") ?? ($"El campo {nameof(Customer.CustomerTypeId)} es requerido")); 
+
+        }
+
+    }
+
+    public class CustomerPresenter : RepositoryBase<ICustomer,Customer>
+    {
+        private readonly CustomerValidator _validator;
+        public CustomerPresenter(ICustomer customer, BusinessObjectsResourceManager businessObjectsResourceManager) : base( customer, businessObjectsResourceManager)
+        {
+            _validator = new CustomerValidator(businessObjectsResourceManager);
+
+            _dbSet = _context.Set<Customer>();
+
+            Add();
+
+
+        }
+        protected override void extendedValidations()
+        {
+            var  validations = _validator.Validate(this._entity);
+            if (!validations.IsValid)
+            {
+                foreach (var item in validations.Errors)
+                {
+                    var fields = new List<string>();
+                    fields.Add(item.PropertyName);
+                    ValidationResult validation = new ValidationResult(item.ErrorMessage, fields);
+                    this._validationResult.Add(validation);
+
+                }
+            }
+           
+        }
+
+        public  override IEnumerable<Customer> Get(string sender) 
+        {
+            Expression<Func<Customer, bool>> filter = (customer) => customer.CustName.ToLower().Contains(sender) || customer.Adress.ToLower().Contains(sender);
+            Func<IQueryable<Customer>, IOrderedQueryable<Customer>> orderFunc = orderByName => orderByName.OrderBy(cust => cust.CustName);
+            return this.Get(filter, orderFunc).Select(a => new  Customer {Id=  a.Id, CustName= a.CustName,Adress=  a.Adress, CustomerType = a.CustomerType,Status=  a.Status }).ToList();
+        }
+
+    }    
 }
+
+/*Aqui debajo codigo del RepositoryBase*/
+
+using BusinessObjects.Context;
+using BusinessObjects.Helpers;
+using BusinessObjects.Interfaces;
+using BusinessObjects.Resources;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
+using System.Linq;
+using System.Linq.Expressions;
+
+namespace BusinessObjects.Repository
+{
+
+    public abstract class RepositoryBase<TInterface, TEntity> : IDisposable, IRepositoryBase<TInterface, TEntity> where TEntity : class, TInterface, new()
+    {
+        public event RefreshData OnRefresh = null;
+        public event Validate BeforeSave = null;
+        public event Validate AfterSave = null;
+        protected DbSet<TEntity> _dbSet;
+        protected readonly HelperValidateEntity _helperValidateEntity;
+        protected TEntity _entity = new TEntity();
+        protected ICollection<ValidationResult> _validationResult;
+        protected readonly CourseContext<TEntity> _context = CourseContext<TEntity>.Factory();
+        private readonly TInterface _interfaceInstance;
+        private readonly HelperAssignProperty<TInterface, TInterface> _helperAssignProperty = new HelperAssignProperty<TInterface, TInterface>();
+        private bool _isDisposed = false;
+        protected readonly BusinessObjectsResourceManager _businessObjectsResourceManager;
+        private readonly INotifyUI _notifyUI;
+
+
+
+        public RepositoryBase(CourseContext<TEntity> context, TInterface interfaceInstance, BusinessObjectsResourceManager businessObjectsResourceManager)
+        {
+            _context = context;
+
+            _dbSet = _context.Set<TEntity>();
+
+            _interfaceInstance = interfaceInstance;
+
+            _notifyUI = _interfaceInstance as INotifyUI;
+
+            _helperValidateEntity = new HelperValidateEntity();
+
+            _businessObjectsResourceManager = businessObjectsResourceManager;
+
+
+            Add();
+        }
+        /// <summary>
+        /// Implemente este contructor deberia por ejemplo hacerlo de la siguiente forma:
+        /// </summary>
+        /// <param name="interfaceInstance">Esta es la instacia de la interface implementada en el View</param>
+        /// <param name="businessObjectsResourceManager">esta deberia ser una instacia unica de BusinessObjectsResourceManager</param>
+        /// <example>
+        /// <code>
+        /// public CustomerPresenter(ICustomer customer, BusinessObjectsResourceManager businessObjectsResourceManager) : base( customer, businessObjectsResourceManager)
+        /// {
+        ///      _validator = new CustomerValidator(businessObjectsResourceManager);
+        ///      _dbSet = _context.Set<Customer>();
+        ///      Add();
+        /// }
+        /// </code>
+        /// </example>
+        public RepositoryBase(TInterface interfaceInstance, BusinessObjectsResourceManager businessObjectsResourceManager)
+        {
+
+ 
+            _interfaceInstance = interfaceInstance;
+
+
+            _notifyUI = _interfaceInstance as INotifyUI;
+
+
+            _helperValidateEntity = new HelperValidateEntity();
+
+            _businessObjectsResourceManager = businessObjectsResourceManager;
+
+
+        }
+        public virtual List<TEntity> GetAll()
+        {
+            return _dbSet.ToList<TEntity>();
+        }
+
+        public abstract IEnumerable<TEntity>  Get(string sender);
+        public virtual IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, string includeProperties = "")
+        {
+            IQueryable<TEntity> query = _dbSet;
+
+            if (filter != null)
+            {
+                query = query.Where(filter);
+
+            }
+
+            query.Take(50);
+
+
+            if (includeProperties != null)
+            {
+                foreach (var includeProperty in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    query = query.Include(includeProperty);
+                }
+
+            }
+
+            if (orderBy != null)
+            {
+                return orderBy(query).ToList();
+            }
+            else
+            {
+                return query.ToList();
+            }
+
+        }
+
+        private void gather()
+        {
+
+            _helperAssignProperty.AssingnProperty("entity_gather", "from_interface", _entity, _interfaceInstance);
+
+            OnRefresh?.Invoke();
+        }
+
+        private void scatter()
+        {
+
+            _helperAssignProperty.AssingnProperty("interface_scatter", "from_entity", _interfaceInstance, _entity);
+
+            OnRefresh?.Invoke();
+
+        }
+
+        private void detachAllEntities()
+        {
+
+            var changedEntriesCopy = _context.ChangeTracker.Entries()
+               .Where(e => e.State == EntityState.Added ||
+                           e.State == EntityState.Modified ||
+                           e.State == EntityState.Deleted)
+               .ToList();
+
+            changedEntriesCopy.ForEach((a) => { a.State = EntityState.Detached; });
+
+        }
+
+        public void Add()
+        {
+            detachAllEntities();
+
+            _entity = new TEntity();
+
+            scatter();
+
+            _dbSet.Add(_entity);
+        }
+
+        public virtual void Delete(int id)
+        {
+            if (id < 1)
+                return;
+
+            if (_context.Entry(_entity).State == EntityState.Modified)
+            {
+
+                _context.Entry(_entity).State = EntityState.Deleted;
+
+                Save();
+
+                Add();
+
+                afterDelete();
+            }
+
+        }
+
+        public virtual void FindById(int id)
+        {
+            detachAllEntities();
+
+            _entity = _dbSet.Find(id);
+
+            if (_entity != null)
+            {
+                scatter();
+
+                _context.Entry(_entity).State = EntityState.Modified;
+
+                return;
+            }
+
+            Add();
+
+        }
+
+        protected virtual void extendedValidations()
+        {
+
+        }
+        protected virtual void beforeSave()
+        {
+
+        }
+        public virtual void Save()
+        {
+            gather();
+
+            if (!executeValidations())
+                return;
+
+            beforeSave();
+
+            BeforeSave?.Invoke();
+
+            var result = _context.SaveChanges();
+
+            afterSave();
+
+            AfterSave?.Invoke();
+
+            scatter();
+
+
+        }
+
+        private bool validateService()
+        {
+            return _helperValidateEntity.ValidateService(_entity);
+        }
+        private bool executeValidations()
+        {
+            if (_notifyUI == null)
+                throw new Exception("El control inyectado a este presenter debe implementar la interface INotifyUI");
+
+            _validationResult = new List<ValidationResult>();
+
+            _notifyUI.ClearErrorsValidations(_validationResult);
+
+            if (!validateService())
+            {
+                _validationResult = _helperValidateEntity.ValidationResult;
+                _notifyUI.NotifyErrors(_validationResult);
+                return false;
+            }
+
+
+
+            extendedValidations();
+
+            if (_validationResult.Count != 0)
+            {
+                _notifyUI.NotifyErrors(_validationResult);
+                return false;
+            }
+            return true;
+        }
+
+        protected virtual void afterSave()
+        {
+
+        }
+
+
+        protected virtual void afterDelete()
+        {
+
+        }
+
+        public virtual void Dispose()
+        {
+            if (!_isDisposed && _context != null)
+            {
+                _isDisposed = true;
+                _context.Dispose();
+
+            }
+        }
+
+    }
+
+}
+
 ```
