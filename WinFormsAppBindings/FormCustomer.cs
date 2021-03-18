@@ -11,6 +11,8 @@ using System.Globalization;
 using System.Threading;
 using System.Resources;
 using BusinessObjects.Resources;
+using System.Linq.Expressions;
+using System.Linq;
 
 namespace WinFormsAppBindings
 {
@@ -195,6 +197,39 @@ namespace WinFormsAppBindings
         public void  ClearErrorsValidations(ICollection<ValidationResult> sender)
         {
             _validator.ClearErrors(sender);
+        }
+
+        private void dataGridViewCustomer_DoubleClick(object sender, EventArgs e)
+        {
+            var  row = this.dataGridViewCustomer.CurrentRow;
+            if (row != null) 
+            {
+                _customerPresenter.FindById((int) row.Cells[0].Value);
+            }
+        }
+
+        private void textBoxSearch_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                search();
+            }
+            catch (Exception ex)
+            {
+
+                showException(ex);
+            }
+           
+
+        }
+
+        private void search()
+        {
+            var valueToSearch = textBoxSearch.Text.ToLower();
+            Expression<Func<Customer, bool>> filter = (customer) => customer.CustName.ToLower().Contains(valueToSearch) || customer.Adress.ToLower().Contains(valueToSearch);
+            Func<IQueryable<Customer>, IOrderedQueryable<Customer>> orderFunc = orderByName => orderByName.OrderBy(cust => cust.CustName);
+            var result = _customerPresenter.Get(filter, orderFunc).Select(a => new { a.Id, a.CustName, a.Adress, a.CustomerType.Description, a.Status }).ToList();
+            this.dataGridViewCustomer.DataSource = result;
         }
     }
 }

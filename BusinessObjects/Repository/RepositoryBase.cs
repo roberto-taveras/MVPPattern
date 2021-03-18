@@ -93,6 +93,9 @@ namespace BusinessObjects.Repository
 
             }
 
+            query.Take(50);
+
+
             if (includeProperties != null)
             {
                 foreach (var includeProperty in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))

@@ -41,6 +41,12 @@ namespace WinFormsAppBindings
             this.buttonDelete = new System.Windows.Forms.Button();
             this.comboBoxCustomerType = new System.Windows.Forms.ComboBox();
             this.labelAdress = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.dataGridViewCustomer = new System.Windows.Forms.DataGridView();
+            this.labelSearch = new System.Windows.Forms.Label();
+            this.textBoxSearch = new System.Windows.Forms.TextBox();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomer)).BeginInit();
             this.SuspendLayout();
             // 
             // labelId
@@ -48,7 +54,6 @@ namespace WinFormsAppBindings
             this.labelId.AutoSize = true;
             this.labelId.Location = new System.Drawing.Point(110, 51);
             this.labelId.Name = "labelId";
-            this.labelId.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.labelId.Size = new System.Drawing.Size(58, 20);
             this.labelId.TabIndex = 0;
             this.labelId.Text = "Codigo";
@@ -56,10 +61,8 @@ namespace WinFormsAppBindings
             // labelName
             // 
             this.labelName.AutoSize = true;
-            this.labelName.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.labelName.Location = new System.Drawing.Point(104, 90);
             this.labelName.Name = "labelName";
-            this.labelName.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.labelName.Size = new System.Drawing.Size(64, 20);
             this.labelName.TabIndex = 1;
             this.labelName.Text = "Nombre";
@@ -67,10 +70,8 @@ namespace WinFormsAppBindings
             // labelCustomerTypeId
             // 
             this.labelCustomerTypeId.AutoSize = true;
-            this.labelCustomerTypeId.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.labelCustomerTypeId.Location = new System.Drawing.Point(58, 204);
             this.labelCustomerTypeId.Name = "labelCustomerTypeId";
-            this.labelCustomerTypeId.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.labelCustomerTypeId.Size = new System.Drawing.Size(110, 20);
             this.labelCustomerTypeId.TabIndex = 2;
             this.labelCustomerTypeId.Text = "Tipo de Cliente";
@@ -123,7 +124,6 @@ namespace WinFormsAppBindings
             // checkBoxStatus
             // 
             this.checkBoxStatus.AutoSize = true;
-            this.checkBoxStatus.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.checkBoxStatus.Location = new System.Drawing.Point(177, 166);
             this.checkBoxStatus.Name = "checkBoxStatus";
             this.checkBoxStatus.Size = new System.Drawing.Size(77, 24);
@@ -161,11 +161,57 @@ namespace WinFormsAppBindings
             this.labelAdress.TabIndex = 11;
             this.labelAdress.Text = "Direccion";
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.textBoxSearch);
+            this.panel1.Controls.Add(this.labelSearch);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1032, 353);
+            this.panel1.TabIndex = 12;
+            // 
+            // dataGridViewCustomer
+            // 
+            this.dataGridViewCustomer.AllowUserToAddRows = false;
+            this.dataGridViewCustomer.AllowUserToDeleteRows = false;
+            this.dataGridViewCustomer.AllowUserToOrderColumns = true;
+            this.dataGridViewCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewCustomer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewCustomer.Location = new System.Drawing.Point(0, 353);
+            this.dataGridViewCustomer.MultiSelect = false;
+            this.dataGridViewCustomer.Name = "dataGridViewCustomer";
+            this.dataGridViewCustomer.ReadOnly = true;
+            this.dataGridViewCustomer.RowHeadersWidth = 51;
+            this.dataGridViewCustomer.RowTemplate.Height = 29;
+            this.dataGridViewCustomer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewCustomer.Size = new System.Drawing.Size(1032, 156);
+            this.dataGridViewCustomer.TabIndex = 13;
+            this.dataGridViewCustomer.DoubleClick += new System.EventHandler(this.dataGridViewCustomer_DoubleClick);
+            // 
+            // labelSearch
+            // 
+            this.labelSearch.AutoSize = true;
+            this.labelSearch.Location = new System.Drawing.Point(149, 304);
+            this.labelSearch.Name = "labelSearch";
+            this.labelSearch.Size = new System.Drawing.Size(52, 20);
+            this.labelSearch.TabIndex = 0;
+            this.labelSearch.Text = "Buscar";
+            // 
+            // textBoxSearch
+            // 
+            this.textBoxSearch.Location = new System.Drawing.Point(207, 301);
+            this.textBoxSearch.Name = "textBoxSearch";
+            this.textBoxSearch.Size = new System.Drawing.Size(300, 27);
+            this.textBoxSearch.TabIndex = 1;
+            this.textBoxSearch.TextChanged += new System.EventHandler(this.textBoxSearch_TextChanged);
+            // 
             // FormCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1032, 509);
+            this.Controls.Add(this.dataGridViewCustomer);
             this.Controls.Add(this.labelAdress);
             this.Controls.Add(this.comboBoxCustomerType);
             this.Controls.Add(this.buttonDelete);
@@ -178,10 +224,13 @@ namespace WinFormsAppBindings
             this.Controls.Add(this.labelCustomerTypeId);
             this.Controls.Add(this.labelName);
             this.Controls.Add(this.labelId);
+            this.Controls.Add(this.panel1);
             this.Name = "FormCustomer";
-            this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.Text = "Clientes";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomer)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -201,6 +250,10 @@ namespace WinFormsAppBindings
         private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.ComboBox comboBoxCustomerType;
         private System.Windows.Forms.Label labelAdress;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.DataGridView dataGridViewCustomer;
+        private System.Windows.Forms.TextBox textBoxSearch;
+        private System.Windows.Forms.Label labelSearch;
     }
 }
 
