@@ -187,6 +187,15 @@ namespace BusinessObjects.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Buscar.
+        /// </summary>
+        internal static string labelSearch {
+            get {
+                return ResourceManager.GetString("labelSearch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tipo Suplidor.
         /// </summary>
         internal static string labelVendorTypeId {

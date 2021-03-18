@@ -98,9 +98,9 @@ namespace WinFormsAppBindings
             this.buttonNew.Name = "buttonNew";
             this.buttonNew.Size = new System.Drawing.Size(94, 29);
             this.buttonNew.TabIndex = 4;
-            this.buttonNew.Text = "Nuevo";
+            this.buttonNew.Text = "New";
             this.buttonNew.UseVisualStyleBackColor = true;
-            this.buttonNew.Click += new System.EventHandler(this.buttonNuevo_Click);
+            this.buttonNew.Click += new System.EventHandler(this.buttonNew_Click);
             // 
             // buttonSave
             // 
@@ -108,9 +108,9 @@ namespace WinFormsAppBindings
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(94, 29);
             this.buttonSave.TabIndex = 5;
-            this.buttonSave.Text = "Salvar";
+            this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = true;
-            this.buttonSave.Click += new System.EventHandler(this.buttonSalvar_Click);
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // textBoxId
             // 
@@ -139,7 +139,7 @@ namespace WinFormsAppBindings
             this.buttonDelete.TabIndex = 7;
             this.buttonDelete.Text = "Eliminar";
             this.buttonDelete.UseVisualStyleBackColor = true;
-            this.buttonDelete.Click += new System.EventHandler(this.buttonBorrar_Click);
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // comboBoxCustomerType
             // 

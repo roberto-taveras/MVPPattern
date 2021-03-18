@@ -159,6 +159,9 @@
   <data name="labelName" xml:space="preserve">
     <value>Name</value>
   </data>
+  <data name="labelSearch" xml:space="preserve">
+    <value>Search</value>
+  </data>
   <data name="labelVendorTypeId" xml:space="preserve">
     <value>VendorTypeId</value>
   </data>
