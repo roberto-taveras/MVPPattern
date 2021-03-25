@@ -134,6 +134,27 @@ namespace BusinessObjects.Helpers
 
 3. `HelperValidateEntity`: El cual se encarga de las validaciones del modelo en base a las restricciones que se colocan en cada bit que representa cada tabla.
 
+```csharp
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Web;
+
+namespace BusinessObjects.Helpers
+{
+    public class HelperValidateEntity
+    {
+        public ICollection<ValidationResult> ValidationResult { get; set; }
+        public  bool ValidateService(object sender)
+        {
+            ValidationContext validationContext = new ValidationContext(sender);
+            ValidationResult = new List<ValidationResult>();
+            return Validator.TryValidateObject(sender, validationContext, ValidationResult, true);
+        }
+    }
+}
+```
 4. `Interfaces` : Contiene las interfaces relacionadas con algunos de los modelos de cada tabla y una interfaz especial llamada INofitify que se inyecta desde la vista al presentador para establecer todo el mecanismo de validación.
 
 5. `Models`: Contiene los pocos de cada clase, estos implementan interfaces que tienen que tener exactamente las mismas propiedades que los modelos para que los getters y setters se ejecuten correctamente en el helper (HelperAssignProperty).
