@@ -185,6 +185,30 @@ namespace BusinessObjects.Interfaces
 }
 ```
 5. `Models`: Contiene los pocos de cada clase, estos implementan interfaces que tienen que tener exactamente las mismas propiedades que los modelos para que los getters y setters se ejecuten correctamente en el helper (HelperAssignProperty).
+```csharp
+using BusinessObjects.Interfaces;
+using BusinessObjects.Resources;
+using System.ComponentModel.DataAnnotations;
+
+
+namespace BusinessObjects.Models
+{
+    public class Customer : ICustomer
+    {
+        public int Id { get; set; }
+        [MaxLength(70, ErrorMessageResourceName = "MaxLengthErrorMessage", ErrorMessageResourceType = typeof(Resource))]
+        [Required(ErrorMessageResourceName = "RequiredErrorMessage", ErrorMessageResourceType = typeof(Resource))]
+        public string CustName { get; set; }
+        [MaxLength(120, ErrorMessageResourceName = "MaxLengthErrorMessage", ErrorMessageResourceType = typeof(Resource))]
+        [Required(ErrorMessageResourceName = "RequiredErrorMessage", ErrorMessageResourceType = typeof(Resource))]
+        public string Adress { get; set; }
+        public bool Status { get; set; }
+        public int CustomerTypeId { get; set; }
+        public virtual CustomerType CustomerType { get; set; }
+
+    }
+}
+```
 
 6. `Repository`: Contiene un repositorio genérico `RespositoryBase` cuya función es reutilizar el código, y evitar tener que hacer lo mismo una y otra vez, se implementa en cada presentador y cuenta con métodos y eventos virtuales que se pueden utilizar para aumentar su flexibilidad:
 
