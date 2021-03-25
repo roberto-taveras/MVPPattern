@@ -88,12 +88,12 @@ namespace BusinessObjects.Context
     }
 }
 ```
-2. `HelperAssignProperty`: El cual es la función de getters y setters (entre la interfaz que se inyecta desde la vista y el modelo que se instancia en el presentador).
+2. `HelperAssignProperty`: Su función es asignar getters y setters (entre la interfaz que se inyecta desde la vista y el modelo que se instancia en el presentador).
 ```scharp
 using System;
 using System.Linq;
 
-namespace BusinessObjects.Helpers
+namespace BusinessObjects.Helpers 
 {
     public class HelperAssignProperty<T,U>  
     {
@@ -132,7 +132,7 @@ namespace BusinessObjects.Helpers
 
 ```
 
-3. `HelperValidateEntity`: El cual se encarga de las validaciones del modelo en base a las restricciones que se colocan en cada bit que representa cada tabla.
+3. `HelperValidateEntity`: Se encarga de las validaciones del modelo en base a las restricciones que se colocan en cada bit que representa cada tabla.
 
 ```csharp
 using System;
@@ -499,7 +499,7 @@ namespace BusinessObjects.Repository
 }
 ```
 
-7. `Presenters`: que implementan RepositoryBase y que pueden sobrescribirse y extender sus validaciones con Fluent Validations.
+7. `Presenters`: Implementan RepositoryBase y que pueden sobrescribirse y extender sus validaciones con Fluent Validations.
 ```csharp
 /*CustomerPresenter implementando CustomerValidator*/
 
