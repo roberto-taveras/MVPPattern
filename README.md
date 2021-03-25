@@ -156,7 +156,18 @@ namespace BusinessObjects.Helpers
 }
 ```
 4. `Interfaces` : Contiene las interfaces relacionadas con algunos de los modelos de cada tabla y una interfaz especial llamada INofitify que se inyecta desde la vista al presentador para establecer todo el mecanismo de validación.
-
+```csharp
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+namespace BusinessObjects.Interfaces
+{
+    public interface INotifyUI
+    {
+        void ClearErrorsValidations(ICollection<ValidationResult> sender);
+        void NotifyErrors(ICollection<ValidationResult> sender);
+    }
+}
+```
 5. `Models`: Contiene los pocos de cada clase, estos implementan interfaces que tienen que tener exactamente las mismas propiedades que los modelos para que los getters y setters se ejecuten correctamente en el helper (HelperAssignProperty).
 
 6. `Repository`: Contiene un repositorio genérico `RespositoryBase` cuya función es reutilizar el código, y evitar tener que hacer lo mismo una y otra vez, se implementa en cada presentador y cuenta con métodos y eventos virtuales que se pueden utilizar para aumentar su flexibilidad:
