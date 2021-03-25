@@ -79,11 +79,9 @@ namespace BusinessObjects.Context
             modelBuilder.Entity<Vendor>().ToTable("Vendors");
             modelBuilder.Entity<CustomerType>().ToTable("CustomerTypes");
             modelBuilder.Entity<VendorType>().ToTable("VendorTypes");
-
             base.OnModelCreating(modelBuilder);
 
         }
-        //public virtual DbSet<Customer> Customers { get; set; }
        
     }
 }
