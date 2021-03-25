@@ -24,7 +24,7 @@ namespace WinFormsAppBindings
          
 
 
-            comboBoxLanguaje.DataSource = Helpers.Languaje.GetLanguajes();
+            comboBoxLanguaje.DataSource = Helpers.Singleton.Instance;
             comboBoxLanguaje.ValueMember = nameof(Helpers.Languaje.Id);
             comboBoxLanguaje.DisplayMember = nameof(Helpers.Languaje.Description);
             comboBoxLanguaje.SelectedIndex = 0;
