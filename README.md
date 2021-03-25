@@ -208,7 +208,7 @@ namespace BusinessObjects.Models
 }
 ```
 
-6. `Repository`: Contiene un repositorio genérico `RespositoryBase` cuya función es reutilizar el código, y evitar tener que hacer lo mismo una y otra vez, se implementa en cada presentador y cuenta con métodos y eventos virtuales que se pueden utilizar para aumentar su flexibilidad:
+6. `Repository`: Contiene un repositorio genérico `RespositoryBase` e implementa `IRepositoryBase` cuya función es reutilizar el código, y evitar tener que hacer lo mismo una y otra vez, se implementa en cada presentador y cuenta con métodos y eventos virtuales que se pueden utilizar para aumentar su flexibilidad:
 ```csharp
 using BusinessObjects.Context;
 using BusinessObjects.Helpers;
