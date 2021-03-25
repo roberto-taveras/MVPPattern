@@ -89,7 +89,7 @@ namespace BusinessObjects.Context
 }
 ```
 2. `HelperAssignProperty`: Su función es asignar getters y setters (entre la interfaz que se inyecta desde la vista y el modelo que se instancia en el presentador).
-```scharp
+```csharp
 using System;
 using System.Linq;
 
