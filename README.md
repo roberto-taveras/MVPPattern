@@ -167,6 +167,22 @@ namespace BusinessObjects.Interfaces
         void NotifyErrors(ICollection<ValidationResult> sender);
     }
 }
+
+using BusinessObjects.Models;
+
+namespace BusinessObjects.Interfaces
+{
+    public interface ICustomer
+    {        
+        int Id { get; set; }
+        string CustName { get; set; }
+        string Adress { get; set; }
+        bool Status { get; set; }
+        int CustomerTypeId { get; set; }
+        CustomerType CustomerType { get; set; }
+
+    }
+}
 ```
 5. `Models`: Contiene los pocos de cada clase, estos implementan interfaces que tienen que tener exactamente las mismas propiedades que los modelos para que los getters y setters se ejecuten correctamente en el helper (HelperAssignProperty).
 
