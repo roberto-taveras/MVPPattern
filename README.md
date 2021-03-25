@@ -34,7 +34,60 @@ El proyecto muestra cómo reducir código al crear aplicaciones de Windows Forms
 # El BusinessObjects tiene las siguientes partes:
 
 1. `Context => CourseContext`: que se encarga de mapear algunos de los modelos que están vinculados a cada tabla.
+```csharp
+using BusinessObjects.Models;
+using BusinessObjects.Resources;
+using System.Data.Entity;
+using System.Globalization;
+using System.Resources;
+using System.Threading;
 
+namespace BusinessObjects.Context
+{
+    public class CourseContext<TEntity> : DbContext
+    {
+       
+        private string cultureName { get; set; }
+
+        protected override void Dispose(bool disposing)
+        {
+            base.Dispose(disposing);
+        }
+        
+        public static CourseContext<TEntity> Factory()
+        { 
+          
+            return new CourseContext<TEntity>("Curso");
+
+        }
+
+        protected CourseContext(string nameOrConnectionString, string cultureName = "es-DO") :base(nameOrConnectionString)
+        {
+            this.cultureName = cultureName;
+            CultureInfo culture = CultureInfo.CreateSpecificCulture(cultureName);
+            Thread.CurrentThread.CurrentCulture = culture;
+            Thread.CurrentThread.CurrentCulture = culture;
+            Thread.CurrentThread.CurrentUICulture = culture;
+            this.Database.CommandTimeout = 180;
+
+        }
+        
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Customer>().ToTable("Customers");
+            modelBuilder.Entity<Vendor>().ToTable("Vendors");
+            modelBuilder.Entity<CustomerType>().ToTable("CustomerTypes");
+            modelBuilder.Entity<VendorType>().ToTable("VendorTypes");
+
+            base.OnModelCreating(modelBuilder);
+
+        }
+        //public virtual DbSet<Customer> Customers { get; set; }
+       
+    }
+}
+```
 2. `HelperAssignProperty`: El cual es la función de getters y setters (entre la interfaz que se inyecta desde la vista y el modelo que se instancia en el presentador).
 
 3. `HelperValidateEntity`: El cual se encarga de las validaciones del modelo en base a las restricciones que se colocan en cada bit que representa cada tabla.
