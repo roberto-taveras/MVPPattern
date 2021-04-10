@@ -130,7 +130,7 @@ namespace BusinessObjects.Helpers
 
 ```
 
-3. `HelperValidateEntity`: Se encarga de las validaciones del modelo en base a las restricciones que se colocan en cada bit que representa cada tabla.
+3. `HelperValidateEntity`: Se encarga de las validaciones del modelo en base a las restricciones que se colocan en cada  validación de los campos del Poco que representa cada tabla.
 
 ```csharp
 using System;
