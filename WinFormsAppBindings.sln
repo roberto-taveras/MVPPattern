@@ -12,6 +12,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WisejWebPageApplication1", "WisejWebPageApplication1\WisejWebPageApplication1.csproj", "{9DA84251-5F1B-4254-82BA-25B40C1B7294}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presenters", "Presenters\Presenters.csproj", "{9552EBD0-F989-4F25-9870-CB9349A770CB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +30,14 @@ Global
 		{25D07450-7B1C-4FB2-AC82-902025019AF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{25D07450-7B1C-4FB2-AC82-902025019AF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{25D07450-7B1C-4FB2-AC82-902025019AF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DA84251-5F1B-4254-82BA-25B40C1B7294}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DA84251-5F1B-4254-82BA-25B40C1B7294}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DA84251-5F1B-4254-82BA-25B40C1B7294}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DA84251-5F1B-4254-82BA-25B40C1B7294}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9552EBD0-F989-4F25-9870-CB9349A770CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9552EBD0-F989-4F25-9870-CB9349A770CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9552EBD0-F989-4F25-9870-CB9349A770CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9552EBD0-F989-4F25-9870-CB9349A770CB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

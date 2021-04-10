@@ -67,15 +67,11 @@
     <Compile Include="Interfaces\ICustomer.cs" />
     <Compile Include="Models\CustomerType.cs" />
     <Compile Include="Models\VendorType.cs" />
-    <Compile Include="Presenters\CustomerPresenter.cs" />
-    <Compile Include="Presenters\CustomerTypePresenter.cs" />
     <Compile Include="Helpers\HelperAssignProperty.cs" />
     <Compile Include="Repository\CustomsDelegates.cs" />
     <Compile Include="Interfaces\IRepositoryBase.cs" />
     <Compile Include="Repository\RepositoryBase.cs" />
-    <Compile Include="Presenters\VendorPresenter.cs" />
     <Compile Include="Context\CourseContext.cs" />
-    <Compile Include="Presenters\VendorTypePresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\BusinessObjectsResourceManager.cs" />
     <Compile Include="Resources\Resource.Designer.cs">
