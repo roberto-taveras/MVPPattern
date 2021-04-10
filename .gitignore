@@ -12,8 +12,14 @@ BusinessObjects/obj/
 *.v2
 BusinessObjects/bin/
 packages/
+<<<<<<< HEAD
 Presenters/obj/Presenters.csproj.nuget.dgspec.json
 Presenters/obj/Presenters.csproj.nuget.g.props
 Presenters/obj/Presenters.csproj.nuget.g.targets
 Presenters/obj/project.assets.json
 Presenters/obj/project.nuget.cache
+=======
+Presenters/obj/Debug/net5.0/Presenters.csprojAssemblyReference.cache
+WisejWebPageApplication1/WisejWebPageApplication1.csproj.user
+WisejWebPageApplication1/obj/Debug/WisejWebPageApplication1.csprojAssemblyReference.cache
+>>>>>>> develop
