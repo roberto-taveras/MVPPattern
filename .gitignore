@@ -12,3 +12,6 @@ BusinessObjects/obj/
 *.v2
 BusinessObjects/bin/
 packages/
+Presenters/obj/Debug/net5.0/Presenters.csprojAssemblyReference.cache
+WisejWebPageApplication1/WisejWebPageApplication1.csproj.user
+WisejWebPageApplication1/obj/Debug/WisejWebPageApplication1.csprojAssemblyReference.cache
