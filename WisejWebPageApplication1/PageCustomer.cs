@@ -270,7 +270,7 @@ namespace WisejWebPageApplication1
         {
             _mainPage.Show();
             _customerPresenter.Dispose();
-            _customerPresenter.Dispose();
+            _customerTypePresenter.Dispose();
             this.Dispose();
         }
     }
