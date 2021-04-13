@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31025.194
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinFormsAppBindings", "WinFormsAppBindings\WinFormsAppBindings.csproj", "{1C694441-E708-4157-9002-83201B59FEF5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinFormsProject", "WinFormsAppBindings\WinFormsProject.csproj", "{1C694441-E708-4157-9002-83201B59FEF5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessObjects", "BusinessObjects\BusinessObjects.csproj", "{25D07450-7B1C-4FB2-AC82-902025019AF5}"
 EndProject
@@ -12,9 +12,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WisejWebPageApplication1", "WisejWebPageApplication1\WisejWebPageApplication1.csproj", "{9DA84251-5F1B-4254-82BA-25B40C1B7294}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WisejWebPageApplicationProject", "WisejWebPageApplication1\WisejWebPageApplicationProject.csproj", "{9DA84251-5F1B-4254-82BA-25B40C1B7294}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presenters", "Presenters\Presenters.csproj", "{9552EBD0-F989-4F25-9870-CB9349A770CB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presenters", "Presenters\Presenters.csproj", "{7C4F07C2-9CC9-4ECF-8C67-A647623916FB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,10 +34,10 @@ Global
 		{9DA84251-5F1B-4254-82BA-25B40C1B7294}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9DA84251-5F1B-4254-82BA-25B40C1B7294}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9DA84251-5F1B-4254-82BA-25B40C1B7294}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9552EBD0-F989-4F25-9870-CB9349A770CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9552EBD0-F989-4F25-9870-CB9349A770CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9552EBD0-F989-4F25-9870-CB9349A770CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9552EBD0-F989-4F25-9870-CB9349A770CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C4F07C2-9CC9-4ECF-8C67-A647623916FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C4F07C2-9CC9-4ECF-8C67-A647623916FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C4F07C2-9CC9-4ECF-8C67-A647623916FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C4F07C2-9CC9-4ECF-8C67-A647623916FB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
