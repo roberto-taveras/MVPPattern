@@ -333,9 +333,9 @@ namespace BusinessObjects.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Cliente.
         /// </summary>
-        internal static string TextBoxCustName {
+        internal static string textBoxCustName {
             get {
-                return ResourceManager.GetString("TextBoxCustName", resourceCulture);
+                return ResourceManager.GetString("textBoxCustName", resourceCulture);
             }
         }
         
@@ -360,9 +360,9 @@ namespace BusinessObjects.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Suplidor.
         /// </summary>
-        internal static string TextBoxVendName {
+        internal static string textBoxVendName {
             get {
-                return ResourceManager.GetString("TextBoxVendName", resourceCulture);
+                return ResourceManager.GetString("textBoxVendName", resourceCulture);
             }
         }
         

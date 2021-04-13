@@ -207,7 +207,7 @@
   <data name="textBoxAdress" xml:space="preserve">
     <value>Direccion</value>
   </data>
-  <data name="TextBoxCustName" xml:space="preserve">
+  <data name="textBoxCustName" xml:space="preserve">
     <value>Cliente</value>
   </data>
   <data name="textBoxId" xml:space="preserve">
@@ -216,7 +216,7 @@
   <data name="textBoxSearch" xml:space="preserve">
     <value>Buscar</value>
   </data>
-  <data name="TextBoxVendName" xml:space="preserve">
+  <data name="textBoxVendName" xml:space="preserve">
     <value>Suplidor</value>
   </data>
   <data name="toolStripMenuItemCustomer" xml:space="preserve">
