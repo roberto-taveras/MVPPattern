@@ -1,5 +1,3 @@
-C:\sistemas_github\MVPPattern\Presenters\obj\Debug\Presenters.csproj.CoreCompileInputs.cache
-C:\sistemas_github\MVPPattern\Presenters\obj\Debug\Presenters.csprojAssemblyReference.cache
 C:\sistemas_github\MVPPattern\Presenters\bin\Debug\Resources\Resource.resx
 C:\sistemas_github\MVPPattern\Presenters\bin\Debug\Resources\Resource.en-US.resx
 C:\sistemas_github\MVPPattern\Presenters\bin\Debug\Resources\Resource.es-DO.resx
@@ -20,6 +18,8 @@ C:\sistemas_github\MVPPattern\Presenters\bin\Debug\EntityFramework.SqlServer.xml
 C:\sistemas_github\MVPPattern\Presenters\bin\Debug\FluentValidation.xml
 C:\sistemas_github\MVPPattern\Presenters\bin\Debug\en-US\BusinessObjects.resources.dll
 C:\sistemas_github\MVPPattern\Presenters\bin\Debug\es-DO\BusinessObjects.resources.dll
+C:\sistemas_github\MVPPattern\Presenters\obj\Debug\Presenters.csprojAssemblyReference.cache
+C:\sistemas_github\MVPPattern\Presenters\obj\Debug\Presenters.csproj.CoreCompileInputs.cache
 C:\sistemas_github\MVPPattern\Presenters\obj\Debug\Presenters.csproj.CopyComplete
 C:\sistemas_github\MVPPattern\Presenters\obj\Debug\Presenter2.dll
 C:\sistemas_github\MVPPattern\Presenters\obj\Debug\Presenter2.pdb

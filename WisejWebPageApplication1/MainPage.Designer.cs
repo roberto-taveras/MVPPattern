@@ -43,7 +43,7 @@ namespace WisejWebPageApplication1
             this.menuBar1.MenuItems.AddRange(new Wisej.Web.MenuItem[] {
             this.menuItemFile});
             this.menuBar1.Name = "menuBar1";
-            this.menuBar1.Size = new System.Drawing.Size(1210, 28);
+            this.menuBar1.Size = new System.Drawing.Size(1093, 28);
             this.menuBar1.TabIndex = 0;
             this.menuBar1.TabStop = false;
             this.menuBar1.MenuItemClicked += new Wisej.Web.MenuItemEventHandler(this.menuBar1_MenuItemClicked);
@@ -88,7 +88,7 @@ namespace WisejWebPageApplication1
             this.Controls.Add(this.comboBoxLanguaje);
             this.Controls.Add(this.menuBar1);
             this.Name = "MainPage";
-            this.Size = new System.Drawing.Size(1210, 428);
+            this.Size = new System.Drawing.Size(1093, 705);
             this.Text = "Page1";
             this.ResumeLayout(false);
             this.PerformLayout();

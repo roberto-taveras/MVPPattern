@@ -30,6 +30,7 @@ namespace WisejWebPageApplication1
         private void InitializeComponent()
         {
             this.panel1 = new Wisej.Web.Panel();
+            this.buttonClose = new Wisej.Web.Button();
             this.buttonSearch = new Wisej.Web.Button();
             this.textBoxSearch = new Wisej.Web.TextBox();
             this.buttonDelete = new Wisej.Web.Button();
@@ -42,7 +43,6 @@ namespace WisejWebPageApplication1
             this.textBoxId = new Wisej.Web.TextBox();
             this.dataGridViewCustomer = new Wisej.Web.DataGridView();
             this.dataRepeater1 = new Wisej.Web.DataRepeater();
-            this.buttonClose = new Wisej.Web.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataRepeater1)).BeginInit();
@@ -64,9 +64,18 @@ namespace WisejWebPageApplication1
             this.panel1.Dock = Wisej.Web.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1027, 376);
+            this.panel1.Size = new System.Drawing.Size(1093, 376);
             this.panel1.TabIndex = 0;
             this.panel1.TabStop = true;
+            // 
+            // buttonClose
+            // 
+            this.buttonClose.Location = new System.Drawing.Point(547, 282);
+            this.buttonClose.Name = "buttonClose";
+            this.buttonClose.Size = new System.Drawing.Size(100, 27);
+            this.buttonClose.TabIndex = 11;
+            this.buttonClose.Text = "Close";
+            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
             // buttonSearch
             // 
@@ -165,7 +174,7 @@ namespace WisejWebPageApplication1
             this.dataGridViewCustomer.Dock = Wisej.Web.DockStyle.Fill;
             this.dataGridViewCustomer.Location = new System.Drawing.Point(0, 376);
             this.dataGridViewCustomer.Name = "dataGridViewCustomer";
-            this.dataGridViewCustomer.Size = new System.Drawing.Size(1027, 363);
+            this.dataGridViewCustomer.Size = new System.Drawing.Size(1093, 363);
             this.dataGridViewCustomer.TabIndex = 1;
             this.dataGridViewCustomer.DoubleClick += new System.EventHandler(this.dataGridViewCustomer_DoubleClick);
             // 
@@ -180,15 +189,6 @@ namespace WisejWebPageApplication1
             this.dataRepeater1.Name = "dataRepeater1";
             this.dataRepeater1.Size = new System.Drawing.Size(200, 100);
             // 
-            // buttonClose
-            // 
-            this.buttonClose.Location = new System.Drawing.Point(547, 282);
-            this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(100, 27);
-            this.buttonClose.TabIndex = 11;
-            this.buttonClose.Text = "Close";
-            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
-            // 
             // PageVendor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -196,7 +196,7 @@ namespace WisejWebPageApplication1
             this.Controls.Add(this.dataGridViewCustomer);
             this.Controls.Add(this.panel1);
             this.Name = "PageVendor";
-            this.Size = new System.Drawing.Size(1027, 739);
+            this.Size = new System.Drawing.Size(1093, 739);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
