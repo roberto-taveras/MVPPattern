@@ -64,7 +64,7 @@ namespace WisejWebPageApplication1
             this.panel1.Dock = Wisej.Web.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1027, 376);
+            this.panel1.Size = new System.Drawing.Size(1093, 376);
             this.panel1.TabIndex = 0;
             this.panel1.TabStop = true;
             // 
@@ -174,7 +174,7 @@ namespace WisejWebPageApplication1
             this.dataGridViewCustomer.Dock = Wisej.Web.DockStyle.Fill;
             this.dataGridViewCustomer.Location = new System.Drawing.Point(0, 376);
             this.dataGridViewCustomer.Name = "dataGridViewCustomer";
-            this.dataGridViewCustomer.Size = new System.Drawing.Size(1027, 363);
+            this.dataGridViewCustomer.Size = new System.Drawing.Size(1093, 363);
             this.dataGridViewCustomer.TabIndex = 1;
             this.dataGridViewCustomer.DoubleClick += new System.EventHandler(this.dataGridViewCustomer_DoubleClick);
             // 
@@ -196,7 +196,7 @@ namespace WisejWebPageApplication1
             this.Controls.Add(this.dataGridViewCustomer);
             this.Controls.Add(this.panel1);
             this.Name = "PageCustomer";
-            this.Size = new System.Drawing.Size(1027, 739);
+            this.Size = new System.Drawing.Size(1093, 739);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
