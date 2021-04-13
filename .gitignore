@@ -26,3 +26,5 @@ WisejWebPageApplication1/obj/Debug/WisejWebPageApplication1.csprojAssemblyRefere
 Presenters/obj/Debug/build.force
 Presenters/obj/Debug/Presenters.csprojAssemblyReference.cache
 Presenters/obj/Debug/.NETFramework,Version=v4.8.AssemblyAttributes.cs
+Presenters/obj/Debug/net5.0/Presenters.assets.cache
+.vs/WinFormsAppBindings/config/applicationhost.config
