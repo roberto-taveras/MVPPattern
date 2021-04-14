@@ -30,6 +30,7 @@ El proyecto muestra cómo reducir código al crear aplicaciones de Windows Forms
 - Fluent Validation 9.0.0.0: https://fluentvalidation.net/
 - La librería BusinessObjects usa Standard Net (4.8)
 - WinFormsAppBindings Tiene como dependencia .Net 5.0
+- https://wisej.com
 
 # El BusinessObjects tiene las siguientes partes:
 
