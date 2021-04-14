@@ -1,18 +1,14 @@
 ﻿/*
 MIT License
-
 Copyright (c) [2020] [Jose Roberto Taveras Galvan]
-
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
-
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
-
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -23,7 +19,7 @@ SOFTWARE.
 */
 
 using System;
-using System.Windows.Forms;
+using Wisej.Web;
 using BusinessObjects.Models;
 using BusinessObjects.Presenters;
 using CommonUserControls.Helpers;
@@ -33,11 +29,11 @@ using BusinessObjects.Interfaces;
 using BusinessObjects.Resources;
 using System.Linq;
 
-namespace WinFormsAppBindings
-{
-    public partial class FormCustomer : Form,ICustomer,INotifyUI
-    {
 
+namespace WisejWebPageApplication1
+{
+    public partial class PageCustomer : Page, ICustomer, INotifyUI
+    {
 
         private readonly CustomerPresenter _customerPresenter;
         private readonly CustomerTypePresenter _customerTypePresenter;
@@ -45,25 +41,19 @@ namespace WinFormsAppBindings
         private readonly ICustomerType _customerType = new CustomerType();
         private readonly HelperControlsToValidate _validator;
         private readonly HelperControlsTranslate _translate;
-
-        public FormCustomer(BusinessObjectsResourceManager businessObjectsResourceManager)
+        private readonly Page _mainPage;
+        public PageCustomer(Page mainPage,BusinessObjectsResourceManager businessObjectsResourceManager)
         {
             InitializeComponent();
-       
+
+            _mainPage = mainPage;
+
             _customerPresenter = new CustomerPresenter(this, businessObjectsResourceManager);
 
             _customerTypePresenter = new CustomerTypePresenter(_customerType, businessObjectsResourceManager);
 
             setDataBinds();
-
-            this.FormClosed += (sender, e) => {
-
-                _customerPresenter.Dispose();
-
-                _customerTypePresenter.Dispose();
-
-            };
-
+                        
             _validator = new HelperControlsToValidate(this);
             _translate = new HelperControlsTranslate(this, businessObjectsResourceManager);
             _translate.Translate();
@@ -75,8 +65,8 @@ namespace WinFormsAppBindings
         public string CustName { get; set; }
         public string Adress { get; set; }
         public bool Status { get; set; } = true;
-        public int CustomerTypeId { get; set ; }
-        public CustomerType CustomerType { get; set ; }
+        public int CustomerTypeId { get; set; }
+        public CustomerType CustomerType { get; set; }
         #endregion
 
         private void setDataBinds()
@@ -103,10 +93,10 @@ namespace WinFormsAppBindings
                                   nameof(Customer.Status),
                                    true, DataSourceUpdateMode.OnPropertyChanged));
 
-           this.comboBoxCustomerType.DataBindings.Add(new Binding("SelectedValue",
-                                _bindingSourceCustomer,
-                                nameof(Customer.CustomerTypeId),
-                                 true, DataSourceUpdateMode.OnPropertyChanged));
+            this.comboBoxCustomerType.DataBindings.Add(new Binding("SelectedValue",
+                                 _bindingSourceCustomer,
+                                 nameof(Customer.CustomerTypeId),
+                                  true, DataSourceUpdateMode.OnPropertyChanged));
 
             this.comboBoxCustomerType.DisplayMember = nameof(CustomerType.Description);
             this.comboBoxCustomerType.ValueMember = nameof(CustomerType.Id);
@@ -118,6 +108,8 @@ namespace WinFormsAppBindings
             _customerPresenter.AfterSave += () => { Console.WriteLine("Puedes poner algo aqui despues de salvar"); };
 
             setTags();
+
+            search();
         }
 
         private void setTags()
@@ -140,7 +132,7 @@ namespace WinFormsAppBindings
 
         }
 
-        private  void showException(Exception ex)
+        private void showException(Exception ex)
         {
             MessageBox.Show($"Se produjo una excepcion {ex.Message}", "Aviso..!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
@@ -162,7 +154,7 @@ namespace WinFormsAppBindings
 
                 showException(ex);
             }
-           
+
         }
 
         private void RefreshData()
@@ -184,7 +176,7 @@ namespace WinFormsAppBindings
 
                 showException(ex);
             }
-           
+
 
         }
 
@@ -204,16 +196,16 @@ namespace WinFormsAppBindings
 
                 showException(ex);
             }
-           
+
         }
 
         public void NotifyErrors(ICollection<ValidationResult> sender)
         {
-           
+
             _validator.ValidateMembers(sender);
         }
 
-        public void  ClearErrorsValidations(ICollection<ValidationResult> sender)
+        public void ClearErrorsValidations(ICollection<ValidationResult> sender)
         {
             _validator.ClearErrors(sender);
         }
@@ -229,7 +221,7 @@ namespace WinFormsAppBindings
 
                 showException(ex);
             }
-            
+
         }
 
         private void findById()
@@ -252,15 +244,34 @@ namespace WinFormsAppBindings
 
                 showException(ex);
             }
-           
+
 
         }
 
         private void search()
         {
             var valueToSearch = textBoxSearch.Text.ToLower();
-            var result = _customerPresenter.Get(valueToSearch).Select ( a=> new { a.Id,a.CustName,a.Adress,a.CustomerType.Description,a.Status });
+            var result = _customerPresenter.Get(valueToSearch).Select(a => new { a.Id, a.CustName, a.Adress, a.CustomerType.Description, a.Status });
             this.dataGridViewCustomer.DataSource = result.ToList();
         }
+
+        private void textBoxSearch_TextChanged_1(object sender, EventArgs e)
+        {
+            search();
+        }
+
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+            search();
+
+        }
+
+        private void buttonClose_Click(object sender, EventArgs e)
+        {
+            _mainPage.Show();
+            _customerPresenter.Dispose();
+            _customerTypePresenter.Dispose();
+            this.Dispose();
+        }
     }
-} 
+}
