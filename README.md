@@ -783,7 +783,7 @@ namespace BusinessObjects.Presenters
 ```
 # Finally we have the WinFormsAppBindings project:
 
-Este proyecto es un proyecto de Windows Forms y utiliza Data Bindings, e inyección de dependencias, básicamente se implementa la interfaz de uno o más modelos y se inyecta en el presentador, Contiene todo el código de gestión de la capa de datos.
+This project is a Windows Forms project and uses Data Bindings, and dependency injection, basically the interface of one or more models is implemented and it is injected into the presenter. It contains all the data layer management code.
 ```csharp
 
 /* Codigo fuente de FormCustomer */
