@@ -71,6 +71,8 @@ namespace WinFormsAppBindings
             _translate = new HelperControlsTranslate(this, businessObjectsResourceManager);
             _translate.Translate();
 
+            this.search();
+
         }
 
 
