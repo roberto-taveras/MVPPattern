@@ -1,40 +1,44 @@
 # MVP Pattern
-- Proyecto de ejemplo usando:
-- Patrón de diseño MVP(Model-View-Presenter)
+- Example project using:
+- MVP design pattern (Model-View-Presenter)
 - Reflection
 - Delegates
-- Events 
-- Repositorio Generico
-- Inyección de dependencias
-- Databindings en Windows Forms
-- Traducciones
-- Validaciones del modelo
+- Events
+- Generic Repository
+- Dependency injection
+- Databindings in Windows Forms
+- Translations
+- Model validations
 - Fluent Validations
-- Globalizacion (es-DO (Español),en-US (Ingles))
+- Globalization (es-DO (Spanish), en-US (English))
 
 <p align="center">
   <img width="460" height="460" src="/WinFormsAppBindings/Assets/MVP.png">
 </p>
 (https://medium.com/android-news/mvp-depp-dive-c6bb1903ace1)
 
-# El BusinessObjects tiene las siguientes partes:
+# The BusinessObjects has the following parts:
  
-En escencia tiene un repositorio generico, con el cual se desarrollan los presenters, estos presenters validan las entidades con la informacion del modelo pero tambien se puede extender usando Fluent Validation si se requiere agregar Reglas, como es utilizado en el proyecto.
+In essence it has a generic repository, with which the presenters are developed, 
+these presenters validate the entities with the information of the model but it can also be extended,
+using Fluent Validation if it is required to add Rules, as it is used in the project.
 
-# Introduccion
+# Introduction
 
-El proyecto muestra cómo reducir código al crear aplicaciones de Windows Forms al usar repositorios genéricos, helpers usando el error provider para no tener que aplicarlo manualmente en cada validación, si no para hacerlo automáticamente como funciona el CRUD en aplicaciones MVC.
+The project shows how to reduce code when creating Windows Forms applications using generic repositories, 
+helpers using the provider error so as not to have to apply it manually in each validation, 
+if not to do it automatically as CRUD works in MVC applications.
 
-# Partes del BusinessObjetcs & Dependencias
+# Parts of BusinessObjetcs & Dependencies
 - EntityFramework.6.4.4
 - Fluent Validation 9.0.0.0: https://fluentvalidation.net/
-- La librería BusinessObjects usa Standard Net (4.8)
-- WinFormsAppBindings Tiene como dependencia .Net 5.0
+- The BusinessObjects library uses Standard Net (4.8)
+- WinFormsAppBindings has as dependency .Net 5.0
 - https://wisej.com
 
-# El BusinessObjects tiene las siguientes partes:
+# The BusinessObjects has the following parts:
 
-1. `Context => CourseContext`: que se encarga de mapear algunos de los modelos que están vinculados a cada tabla.
+1. `Context => CourseContext`: which is responsible for mapping some of the models that are linked to each table.
 ```csharp
 using BusinessObjects.Models;
 using BusinessObjects.Resources;
@@ -87,7 +91,7 @@ namespace BusinessObjects.Context
     }
 }
 ```
-2. `HelperAssignProperty`: Su función es asignar getters y setters (entre la interfaz que se inyecta desde la vista y el modelo que se instancia en el presentador).
+2. `HelperAssignProperty`: Its function is to assign getters and setters (between the interface that is injected from the view and the model that is instantiated in the presenter).
 ```csharp
 using System;
 using System.Linq;
@@ -131,7 +135,7 @@ namespace BusinessObjects.Helpers
 
 ```
 
-3. `HelperValidateEntity`: Se encarga de las validaciones del modelo en base a las restricciones que se colocan en cada  validación de los campos del Poco que representa cada tabla.
+3. `HelperValidateEntity`: It is in charge of the validations of the model based on the restrictions that are placed in each validation of the fields of the Bit that each table represents.
 
 ```csharp
 using System;
@@ -154,7 +158,7 @@ namespace BusinessObjects.Helpers
     }
 }
 ```
-4. `Interfaces` : Contiene las interfaces relacionadas con algunos de los modelos de cada tabla y una interfaz especial llamada INofitify que se inyecta desde la vista al presentador para establecer todo el mecanismo de validación.
+4. `Interfaces` : It contains the interfaces related to some of the models of each table and a special interface called INofitify that is injected from the view to the presenter to establish the entire validation mechanism.
 ```csharp
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -183,7 +187,7 @@ namespace BusinessObjects.Interfaces
     }
 }
 ```
-5. `Models`: Contiene los pocos de cada clase, estos implementan interfaces que tienen que tener exactamente las mismas propiedades que los modelos para que los getters y setters se ejecuten correctamente en el helper (HelperAssignProperty).
+5. `Models`: It contains the few of each class, these implement interfaces that have to have exactly the same properties as the models so that the getters and setters are executed correctly in the helper (HelperAssignProperty).
 ```csharp
 using BusinessObjects.Interfaces;
 using BusinessObjects.Resources;
@@ -208,8 +212,7 @@ namespace BusinessObjects.Models
     }
 }
 ```
-
-6. `Repository`: Contiene un repositorio genérico `RespositoryBase` e implementa `IRepositoryBase` cuya función es reutilizar el código, y evitar tener que hacer lo mismo una y otra vez, se implementa en cada presentador y cuenta con métodos y eventos virtuales que se pueden utilizar para aumentar su flexibilidad:
+6 `Repository` It contains the few of each class, these implement interfaces that have to have exactly the same properties as the models so that the getters and setters are executed correctly in the helper (HelperAssignProperty).Contiene un repositorio genérico `RespositoryBase` e implementa `IRepositoryBase` cuya función es reutilizar el código, y evitar tener que hacer lo mismo una y otra vez, se implementa en cada presentador y cuenta con métodos y eventos virtuales que se pueden utilizar para aumentar su flexibilidad:
 ```csharp
 using BusinessObjects.Context;
 using BusinessObjects.Helpers;
@@ -498,7 +501,7 @@ namespace BusinessObjects.Repository
 }
 ```
 
-7. `Presenters`: Implementan RepositoryBase y que pueden sobrescribirse y extender sus validaciones con Fluent Validations.
+7. `Presenters`: They implement RepositoryBase and they can be overwritten and extended with Fluent Validations.
 ```csharp
 /*CustomerPresenter implementando CustomerValidator*/
 
@@ -572,7 +575,7 @@ namespace BusinessObjects.Presenters
 
 
 ```
-8. `Resources`: Contiene archivos de recursos y un Helper `BusinessObjectsResourceManager` para la traducción al inglés y al español de la interfaz de usuario y el texto devuelto por las validaciones.
+8. `Resources`: Contains resource files and a `BusinessObjectsResourceManager` Helper for the English and Spanish translation of the user interface and the text returned by validations.
 ```xml
 ?xml version="1.0" encoding="utf-8"?>
 <root>
@@ -778,7 +781,7 @@ namespace BusinessObjects.Presenters
   </data>
 </root>
 ```
-# Finalmente tenemos el proyecto WinFormsAppBindings:
+# Finally we have the WinFormsAppBindings project:
 
 Este proyecto es un proyecto de Windows Forms y utiliza Data Bindings, e inyección de dependencias, básicamente se implementa la interfaz de uno o más modelos y se inyecta en el presentador, Contiene todo el código de gestión de la capa de datos.
 ```csharp
@@ -1034,7 +1037,8 @@ namespace WinFormsAppBindings
 } 
 
 ```
-# Se Agrego una implementacion de Wisej a continuacion el ejemplo
+# Added a Wisej implementation below the example
+
 ```csharp
 /*
 MIT License
