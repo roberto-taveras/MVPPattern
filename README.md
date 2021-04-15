@@ -1319,7 +1319,7 @@ namespace WisejWebPageApplication1
 }
 
 ```
-# Helpers de traduccion y validacion de la interface de usuarios
+# Translation and validation helpers of the user interface
 ```csharp
 using BusinessObjects.Resources;
 using System.Collections.Generic;
