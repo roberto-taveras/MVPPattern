@@ -212,7 +212,7 @@ namespace BusinessObjects.Models
     }
 }
 ```
-6 `Repository` It contains the few of each class, these implement interfaces that have to have exactly the same properties as the models so that the getters and setters are executed correctly in the helper (HelperAssignProperty).Contiene un repositorio genérico `RespositoryBase` e implementa `IRepositoryBase` cuya función es reutilizar el código, y evitar tener que hacer lo mismo una y otra vez, se implementa en cada presentador y cuenta con métodos y eventos virtuales que se pueden utilizar para aumentar su flexibilidad:
+6 `Repository` It contains the few of each class, these implement interfaces that have to have exactly the same properties as the models so that the getters and setters are executed correctly in the helper (HelperAssignProperty).It contains a generic `RespositoryBase` repository and implements` IRepositoryBase` whose function is to reuse the code, and avoid having to do the same thing over and over again, it is implemented in each presenter and has virtual methods and events that can be used to increase its flexibility:
 ```csharp
 using BusinessObjects.Context;
 using BusinessObjects.Helpers;
