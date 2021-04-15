@@ -32,4 +32,17 @@ Presenters/obj/Debug/net5.0/Presenters.assets.cache
 WisejWebPageApplication1/obj/Debug/DesignTimeResolveAssemblyReferences.cache
 =======
 Presenters/obj/Debug/Presenters.csprojAssemblyReference.cache
+<<<<<<< HEAD
+>>>>>>> develop
+=======
+.vs/WinFormsAppBindings/config/applicationhost.config
+Presenters/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+Presenters/obj/Debug/Presenters.csproj.CoreCompileInputs.cache
+Presenters/obj/Debug/Presenters.csproj.FileListAbsolute.txt
+WisejWebPageApplication1/bin/Wisej.Framework.xml
+WisejWebPageApplication1/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+WisejWebPageApplication1/obj/Debug/WisejWebPageApplicationProject.csproj.CoreCompileInputs.cache
+WisejWebPageApplication1/obj/Debug/WisejWebPageApplicationProject.csproj.FileListAbsolute.txt
+WisejWebPageApplication1/obj/Debug/WisejWebPageApplicationProject.csproj.GenerateResource.cache
+WisejWebPageApplication1/obj/Debug/WisejWebPageApplicationProject.csprojAssemblyReference.cache
 >>>>>>> develop
